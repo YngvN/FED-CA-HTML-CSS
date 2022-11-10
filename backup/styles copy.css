@@ -1,0 +1,409 @@
+/* Gotten help from fellow student, Bjørnar Langved, hence some of the same names */
+
+@media only screen and (min-width: 1000px){
+    .body_index{
+        background-image: url("/assets/img_bg.png");
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: 0px 550px;
+   }
+}
+
+/* 
+
+
+/* Header */
+.header{
+    background-color: var(--black);
+    box-shadow: 1px 1px 5px 0px var(--gray);
+    position: sticky;
+    top: 0;
+    width: 100%;
+}
+/* Logo */
+.logo{
+    display: inline-block;
+    color: var(--white);
+    font-size: 60px;
+    margin-left: 10px;
+}
+
+/* Nav menu */
+.nav{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: var(--black);
+    overflow: hidden;
+
+}
+.menu a{
+    display: block;
+    padding: 30px;
+    color: var(--white);
+}
+.menu a:hover{
+    background-color: var(--gray);
+}
+.nav{
+    max-height: 0;
+    transition: max-height .5s ease-out;
+}
+
+/* Menu Icon */
+.hamb{
+    cursor: pointer;
+    float: right;
+    padding: 40px 20px;
+}/* Style label tag */
+
+.hamb-line {
+    background: var(--white);
+    display: block;
+    height: 2px;
+    position: relative;
+    width: 24px;
+
+} /* Style span tag */
+
+.hamb-line::before,
+.hamb-line::after{
+    background: var(--white);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
+}
+.hamb-line::before{
+    top: 5px;
+}
+.hamb-line::after{
+    top: -5px;
+}
+
+.side-menu {
+    display: none;
+} /* Hide checkbox */
+
+/* Toggle menu icon */
+.side-menu:checked ~ nav{
+    max-height: 100%;
+}
+.side-menu:checked ~ .hamb .hamb-line {
+    background: transparent;
+}
+.side-menu:checked ~ .hamb .hamb-line::before {
+    transform: rotate(-45deg);
+    top:0;
+}
+.side-menu:checked ~ .hamb .hamb-line::after {
+    transform: rotate(45deg);
+    top:0;
+}
+
+/* Responsiveness */
+@media (min-width: 850px) {
+    .nav{
+        max-height: none;
+        top: 0;
+        position: relative;
+        float: right;
+        width: fit-content;
+    }
+    .menu li{
+        float: left;
+    }
+    .menu a:hover{
+        background-color: transparent;
+        color: var(--gray);
+
+    }
+
+    .hamb{
+        display: none;
+    }
+}
+
+/* --------  */
+
+
+
+.body_index {
+    margin: 0px;
+    background-color: #11172E ;
+    min-height: 100vh;
+    display: grid;
+    grid-gap: 1em;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+    'header'
+    'main'
+    'footer'
+    ;
+}
+
+/* header {
+    background-color:#000000;
+    position: relative;
+    width: 100%;
+}
+/*  */
+.logo_mb{
+    display: none;
+ }
+
+.logo_dt{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+}
+
+/* Top Navigation */
+/* nav li {
+    display: inline-block;
+}
+
+nav ul {
+    padding: 0%;
+}
+
+nav a {    
+    font-family: Impact, Verdana, sans-serif;
+    color: #fff;
+    text-decoration: none;
+    padding: 20px;
+}
+
+nav a:hover {
+    background-color: #1F2337;
+}
+
+.nav_dt_right{
+    position: absolute;
+    top: 18px;
+    right: 0px;    
+}
+
+.active{    
+    text-decoration: none;
+    background-color: #fff;
+    color:#11172E
+} */ 
+
+/* -------- */
+
+/* Main */
+main{
+    display: grid;
+    grid-template-columns: 'main';
+    margin:10%;
+    background-color: #313131;
+    color:#fff;
+}
+
+
+footer {
+    max-height: 11vh;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #3f3f3f;
+    color: rgb(136, 136, 136);
+    border-style: inset;
+    border-width: 1px;
+    border-bottom: #11172e00;
+    border-left: #11172e00;
+    border-right: #11172e00;
+
+}
+
+/* Bottom Navigation */
+nav b {  
+    font-family: Verdana, sans-serif;
+    color: #fff;
+}
+
+.nav_about_contact li{
+    display: inline-block;
+    padding-left: 1%;
+    font-size: 0.7em;
+    text-decoration: none;
+}
+
+nav b:hover {
+    color:lightskyblue;
+    text-decoration: underline;
+}
+
+.extra_nav{
+    margin-bottom: 0%;
+    font-size:0.6em;
+    text-align: center;
+}
+.extra_nav li{
+    padding-top: 0.5%;
+    padding-left: 1%;
+}
+
+.extra_nav::before, .extra_nav::after{
+    content:"|";
+    color:#313131;
+}
+
+.legal_text{
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 0.7em;
+    color: rgb(136, 136, 136);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    margin-bottom: 0px;
+}
+
+
+.m-menu, .m-menu__toggle {
+    display: none;
+}
+
+
+
+ 
+ @media only screen and (max-width: 850px){
+    .logo_dt{
+        display: none;
+    }
+    
+    .logo_mb{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 25px;
+      width: 80%;
+    }
+
+    header, footer{
+        display: none;
+    }
+
+    /* Navigation mobile */
+    
+
+/* KODE hentet fra https://worstpractice.dev/frontend/create-a-simple-hamburber-menu-with-css */
+
+    /* .m-menu {
+        display: block;
+        position: fixed;
+        bottom: 50%;
+        width: 10%;
+        z-index: 100;
+        pointer-events: none;
+        margin: 0;
+        padding: 0;
+    }
+
+     .m-menu__backdrop {
+        z-index: 1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.5);
+        opacity: 0;
+        transition: opacity 500ms ease-out;
+        pointer-events: none;
+    }
+
+ 
+    .m-menu__burger {
+        z-index: 2;
+        position: absolute;
+        width: 3rem;
+        height: 2rem;
+        top: 1rem;
+        left: 1rem;
+        padding: 1.5rem;
+    }
+
+    .m-menu__burger span,
+    .m-menu__burger span::before,
+    .m-menu__burger span::after {
+        content: '';
+        display: block;
+        width: 2.5rem;
+        height: 0.3rem;
+        position: absolute;
+        margin-top: 1rem;
+        background: rgba(255, 255, 255, 1);
+        border-radius: 0.3rem;
+    }
+
+    .m-menu__burger span::before {
+        margin-top: -0.8rem;
+    }
+
+    .m-menu__burger span::after {
+        margin-top: 0.8rem;
+    }
+
+    .m-menu__toggle {
+        display: inherit;
+        z-index: 3;
+        position: absolute;
+        width: 4rem;
+        height: 4rem;
+        top: 1.1rem;
+        left: 1.1rem;
+        cursor: pointer;
+        opacity: 0;
+        outline: 1px solid black;
+        pointer-events: all;
+    }
+
+    .m-menu__content {
+        z-index: 4;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: auto;
+        width: 30rem;
+        height: 100vh;
+        margin: 0;
+        padding: 0 0 2rem 0;
+        background: rgba(230, 230, 230, 1);
+        transform-origin: 0 0;
+        transform: translateX(-31.5rem);
+        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+        pointer-events: all;
+        box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.75);
+    }
+
+    .m-menu__toggle:checked {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+
+    .m-menu__toggle:checked ~ .m-menu__content {
+        transform:none;
+    }
+
+    .m-menu__toggle:checked ~ .m-menu__backdrop {
+        opacity: 1;
+    } */
+/* NY KODE FERDIG */
+ }
+
+
+
+/* @media only screen and (min-width: 480px){
+footer {
+        background-color: white;
+   }
+} */
