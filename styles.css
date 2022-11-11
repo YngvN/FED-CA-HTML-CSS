@@ -1,35 +1,37 @@
-/* Theming */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
-
+/* ------------------------------------------------------ */
+/* General Styling */
 :root{
     --white: #f9f9f9;
     --black: #36383F;
+    --darkgrey: #333;
     --grey: #85888C;
+    --darkblue: #11172E;
+    --color_active:#11172E;
 }
-
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
-.logo_dt{
-    display: none;
- }
-
-.logo_mb{
-    display:block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 2%;
-    padding-bottom: 1%;
-    width: 390px;
-    
+body{
+    background-color: var(--darkblue);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+a{
+    text-decoration: none;
+    color: var(--white);
+}
+b{
+    color: var(--white);
+}
+ul{
+    list-style: none;
+}
+
+/* Individual page styling */
 .body_index{
     margin: 0px;
-    background-color: #11172E ;
     min-height: 100vh;
     display: grid;
     grid-gap: 1em;
@@ -39,49 +41,52 @@
     'main'
     'footer'
     ;
-    background-color: lightblue;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-a{
-    text-decoration: none;
-}
-
-b{
-    color: #f9f9f9;
-}
-
-ul{
-    list-style: none;
-}
-
-.header{
-    max-height: 2700px;
-    background-color: var(--black);
-    box-shadow: 1px 1px 5px 0px var(--gray);
+header{
+    max-height: 10%;
+    background-color:transparent;
     top: 0;
     width: 100%;
 }
+
+
+footer{
+    max-height: 100%;
+    display:sticky;
+    background-color: var(--darkgrey);
+    width: 100%;
+}
+
+/* Main Logo */
+.logo_dt{
+    display: none;
+ }
+
+.logo_text{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2%;
+    padding-bottom: 1%;
+    width: 390px;
+}
+
+/* ------------------------------------------------------ */
 
 main{
     min-height: 20vh;
     margin: 5%;
     background-color: aqua;
+    overflow: hidden;
 }
 
-footer{
-    max-height: 200px;
-    display:flex;
-    justify-content:space-evenly;
-    background-color: #333;
-    box-shadow: 0 1px 8px #ddd;
-    width: 100%;
-}
-
-/* Mobile footer navbar */
+/* ------------------------------------------------------ */
+/* Footer mobile navbar */
 .footer_mb{
-    background-color: #333;
     width: 100%;
+    height: 100%;
+    overflow: visible;
 }
 
 .footer_mb li{
@@ -93,7 +98,7 @@ footer{
 }
 
 .footer_mb b{
-    color: #f2f2f2;
+    color: var(--white);
     padding: 20px;
     text-decoration: none;
     font-size: 25px;
@@ -113,65 +118,92 @@ footer{
     color: black;
 }
 .icon_games{
-    width: 50px;
+    margin-top:8px;
+    width: 55px;
 }
-
-/* Desktop footer navbar */
-.footer_dt{
-    display: none;
-}
-.nav.dt{
-    display: none;
-}
-
-
-/* Nav menu */
+/* ------------------------------------------------------ */
+/* Hamburger Menu */
 .nav{
     width: 100%;
     height: 100%;
-    background-color: orange;
-    overflow: hidden;
+    background-color: var(--black);
+    overflow:hidden;
     position: absolute;
-    top:117px;
+    top:0;
+    max-height: 0%;
 }
-.active{    
+
+.active_mb{    
     text-decoration: none;
+    padding: 15px 32px;
     background-color: rgba(255, 255, 255, 0.218);
-    color:#11172E
+    color:var(--white)
+
 } 
+
+
 .menu_dt{
     display:none;
 }
-.menu a{
-    display: block;
-    padding: 30px;
-    color: var(--white);
+.menu{
+    display: inline-flex;
+    flex-direction: column;
+    margin-top: 9%;
+    width: 100%;
 }
-.menu a:hover{
-    background-color: var(--grey);
-}
-.nav{
-    max-height: 0%;
-    transition: max-height .5s ease-out;
-}
-/* .menu_show{
-    display: none;
-} */
 
-/* Menu Icon */
+
+.menu a{
+    display: flex;
+    color: var(--white);
+    padding: 15px 40px;
+    font-size: 1.5rem;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: -0px;
+}
+
+.menu a:hover{
+    background-color: #ddd;
+    color: black;
+    width: 100%;
+    
+}
+
+.logo_mb_nav{
+    display:block;
+    padding: 3%;
+    width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+
+    
+}
+.legal_text_mb{
+    display: block;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 0.7em;
+    color: rgb(136, 136, 136);
+    margin-left: 4px;
+    margin-right: 4px;
+    
+
+}
+/* Hamburger Icon */
 .hamb{
     position: absolute;
     display: block;
     cursor: pointer;
     padding: 20px 6%;
-    margin-left: 25px;
+    padding-left: 9%;
 }
 .hamb-line {
     background: var(--white);
     display: block;
-    height: 2.5px;
+    height: 3px;
     position: relative;
-    width: 30px;
+    width: 35px;
 }
 .hamb-line::before,
 .hamb-line::after{
@@ -184,21 +216,16 @@ footer{
     width: 100%;
 }
 .hamb-line::before{
-    top: 6px;
+    top: 8px;
 }
 .hamb-line::after{
-    top: -6px;
+    top: -8px;
 }
 .side-menu {
     display: none;
 }
-
-/* Toggle menu icon */
-
-/* Toggle menu position */
-
 .side-menu:checked ~ .nav{
-    max-height: 76%;
+    max-height: 91%;
 
 }
 .side-menu:checked ~ .hamb .hamb-line {
@@ -212,59 +239,68 @@ footer{
     transform: rotate(45deg);
     top:0;
 }
-/* Desktop */
+/* ------------------------------------------------------ */
 
+/* Desktop footer navbar */
+.footer_dt{
+    display: none;
+}
+.nav.dt{
+    display: none;
+}
+/* ------------------------------------------------------ */
+        /* Desktop */
 @media (min-width: 768px) {
-    .header{
-        max-height: 77px;
-        background-color: transparent;
-        box-shadow: 1px 1px 5px 0px var(--grey);
+
+    /* General Desktop Styling */
+    header{
+        max-height: 10%;
         position: sticky;
     }
-
-    .nav_dt{
-        display: block;
-        max-height: none;
-        top: 0;
-        position: relative;
-        float: right;
-        width: fit-content;
-        background-color: blueviolet;
-    }
-
-    .menu_dt{
-        display: block;
-        background-color: green;
-    }
-    .menu_dt li{
-        float: left;
-        padding: 30px;
-        color: var(--white)
-    }
-    .menu a:hover{
-        background-color: transparent;
-        color: var(--grey);       
-    }
-    .menu_dt a:hover{
-        background-color: transparent;
-        color: var(--grey);  
-    }
-    
-    .hamb{
-        display: none;
-    }
-
 
     .logo_mb{
         display: none;
     }   
-    .logo_dt{
+    .logo_text{
       display: inline-block;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 25px;
-      width: 200px;
+      position: absolute;
+      padding: 20px;
+      width: 300px;
     }
+
+    /* Desktop Top Navigation */
+    .nav_dt{
+        top: 0;
+        position: relative;
+        float: right;
+        width: fit-content;
+    }
+    .menu_dt{
+        display: inline-flex;
+        background-color: var(--darkgrey);
+    }
+    .menu_dt a{
+        display: block;
+        float: left;
+        padding: 35px;
+    }
+    .menu_dt a:hover{
+        background-color: #ddd;
+        color: black;
+    }
+    .active_dt{    
+        text-decoration: none;
+        background-color: rgba(255, 255, 255, 0.218);
+        color:var(--white);
+        padding: 20px;
+    }  
+
+    .hamb{
+        display: none;
+    }
+
+/* ------------------------------------------------------ */
+
 
     .body_index{
         background-image: url("/assets/img_bg.png");
@@ -296,7 +332,7 @@ footer{
     }
 
     .nav_about_contact li{
-        display: inline-block;
+        display: inline-flex;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         font-size: 0.7em;
         text-decoration: none;
@@ -321,7 +357,7 @@ footer{
         font-size:0.6em;
     }
     .extra_nav li{
-        display: inline-block;
+        display: inline-flex;
         padding-top: 0.4%;
         padding-left: 1%;
         cursor: pointer;
@@ -332,7 +368,7 @@ footer{
         font-family: sans-serif;
         font-size: 0.7em;
         color: rgb(136, 136, 136);
-        margin-left: auto;
+        margin-left: 4px;
         margin-right: auto;
         margin-top: 1.1%;
         margin-bottom: 0.2%;
