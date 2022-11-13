@@ -9,10 +9,10 @@
     <title>GameHub</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="body_contact">
+<body class="body_contact img_bg">
     <header class="header">
         <!-- Logo -->
-        <img src="assets/img_logo_full_la.png" class="logo_full" alt="Gamehub"/>
+        <img src="assets/img_logo_full_md.png" class="logo_full" alt="Gamehub"/>
         <!-- Desktop Navbar -->
         <nav class="nav_dt">
             <ul class="menu_dt">
@@ -43,56 +43,45 @@
             
         </article>
     </main>
+    <!-- Mobile Navbar -->
+    <div class="nav_mb">
+        <!-- Hamburger Menu -->
+        <input class="side-menu" type="checkbox" id="side-menu"/>
+        <a><label class="icon_hamb" for="side-menu"><span class="hamb-line"></span></label></a> 
+        <div class="nav_hamb">
+            <div class="menu_grid">
+            <img src="assets/img_logo_full_md.png" class="logo_mb_nav" alt="Gamehub"/>
+            <div class="menu_hamb">
+                <b href="index.html" class="active_mb">Home</b>
+                <b href="games.html">Games</b>
+                <b href="about.html">About</b>
+                <b href="contact.html">Contact</b>
+            </div>
+        </div>
+            <p class="legal_text_mb">© 2022, GameHub, Inc. All rights reserved. GameHub, the GameHub logo and your mom are trademarks or registered trademarks of GameHub, Inc. in my moms garage. Other brands or product names are the trademarks of their respective owners. Non-garage transactions go through my mom since I'm not allowed to anymore. </p> 
+        </div>
+        <!-- Footer Navbar -->
+        <a href="games.html" class="footer_nav_hover"><img src="assets/img_icon_games.png" class="icon_games" alt="Games"/></a>
+        <a href="profile.html" class="footer_nav_hover"><i class="fa-regular fa-user fa-lg" alt="Profile"></i></a>
+        <a href="cart.html" class="footer_nav_hover"><i class="fa-solid fa-cart-shopping fa-lg" alt="Shopping Cart"></i></a>
+    </div>
 <!-- ----------------------------------------------------------------------------- -->
-    <footer>       
-        <!-- Footer Mobile -->
-        <nav class="footer_mb">
-            <ul class="footer_nav">
-                <!-- Hamburger Menu -->
-                <li>
-                    <input class="side-menu" type="checkbox" id="side-menu"/>
-                    <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
-                    <nav class="nav">
-                        <img src="assets/img_logo_full_md.png" class="logo_mb_nav" alt="Gamehub"/>
-                        <ul class="menu">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="games.html">Games</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="contact.html" class="active_mb">Contact</a></li>
-                        </ul>
-                        <p class="legal_text_mb">© 2022, GameHub, Inc. All rights reserved. GameHub, the GameHub logo and your mom are trademarks or registered trademarks of GameHub, Inc. in my moms garage. Other brands or product names are the trademarks of their respective owners. Non-garage transactions go through my mom since I'm not allowed to anymore. </p> 
-                    </nav>
-                </li>
-                <!-- Footer Mobile Navbar -->
-                    <li class="footer_nav_hover"><b href="games.html"><img src="assets/img_icon_games.png" class="icon_games" alt="Games"/></b></li>
-                    <li class="footer_nav_hover"><b href="profile.html"><i class="fa-regular fa-user fa-lg" alt="Profile"></i></b></li>
-                    <li class="footer_nav_hover"><b href="cart.html"><i class="fa-solid fa-cart-shopping fa-lg" alt="Shopping Cart"></i></b></li>
-            </ul>
-        </nav>
-
+<footer>   
         <!-- ----------------------------------------------------------------------------- -->
         <!-- Footer desktop -->
-
-        <nav class="footer_dt">
-            <div class="nav_acsm">
-                 <ul class="nav_about_contact">
-                    <li><b href="about.html">About</b></li>
-                    <li><b href="contact.html" class="active_dt">Contact</b></li>
-                </ul>
-                <ul class="social_media">
-                    <p class="legal_text">Follow us:</p>
-                    <li><b href="contact.html"><i class="fa-brands fa-square-facebook"></i></b></li>
-                    <li><b href="contact.html"><i class="fa-brands fa-square-twitter"></i></b></li>
-                </ul>
-            </div>
-            <ul class="extra_nav">
-                <li><b href="tos.html" >Terms of Service</b></li>
-                <li><b href="pp.html">Privacy Policy</b></li>
-                <li><b href="refund.html">Store Refund Policy</b></li>
-            </ul>
-        </nav>   
-        <p class="legal_text">© 2022, GameHub, Inc. All rights reserved. GameHub, the GameHub logo and your mom are trademarks or registered trademarks of GameHub, Inc. in my moms garage. Other brands or product names are the trademarks of their respective owners. Non-garage transactions go through my mom since I'm not allowed to anymore. </p>    
-    </footer>
-<!-- ----------------------------------------------------------------------------- -->
-</body>
-</html>
+        <div class="nav_about_contact">
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="social_media">
+            <b href="contact.html"><i class="fa-brands fa-square-facebook"></i></b>
+            <b href="contact.html"><i class="fa-brands fa-square-twitter"></i></b>
+        </div>
+        </div>  
+            <p class="legal_text">© 2022, GameHub, Inc. All rights reserved. GameHub, the GameHub logo and your mom are trademarks or registered trademarks of GameHub, Inc. in my moms garage. Other brands or product names are the trademarks of their respective owners. Non-garage transactions go through my mom since I'm not allowed to anymore. </p>    
+        <div class="extra_nav">
+            <b href="tos.html" >Terms of Service</b>
+            <b href="pp.html">Privacy Policy</b>
+            <b href="refund.html">Store Refund Policy</b>
+        </div> 
+</footer>
