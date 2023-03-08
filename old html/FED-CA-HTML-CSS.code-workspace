@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "FED-CA-HTML-CSS",
+			"path": "."
+		},
+		{
+			"name": "assets",
+			"path": "../../../../../../Desktop/GameHub PNG/assets"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "FED-CA-HTML-CSS"
+	}
+}
