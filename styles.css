@@ -12,8 +12,6 @@ body {
     font-family: Rift, Impact, 'Arial Narrow Bold', sans-serif;
 }
 
-
-
 h1,
 h2,
 h3 {
@@ -23,7 +21,10 @@ h3 {
 
 h1 {}
 
-h2 {}
+h2 {
+    z-index: 2;
+
+}
 
 main {
     display: flex;
@@ -70,6 +71,7 @@ nav {
     padding: 0;
     margin: 0;
     width: min-content;
+    z-index: 2;
 }
 
 ul {
@@ -87,7 +89,8 @@ li .active {
 
 }
 
-li {
+nav li,
+.footer-container li {
     position: relative;
     padding: .5em 1em;
     margin: 0;
@@ -96,7 +99,8 @@ li {
 
 }
 
-li:hover {
+nav li:hover,
+.footer-container li:hover {
     background-color: var(--white);
 }
 
@@ -247,4 +251,266 @@ footer {
     font-size: small;
     margin: 0;
     text-align: center;
+}
+
+.main-games {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 17em;
+    position: relative;
+    align-self: flex-start;
+    background-color: var(--darkgrey);
+    padding: 1em;
+}
+
+#search-form {
+    display: flex;
+    height: 3em;
+    width: 100%;
+    border-style: inset;
+}
+
+#search-input {
+    font-size: 1rem;
+    height: 100%;
+    width: 80%;
+    border: none;
+
+    padding: 0 0.5em;
+}
+
+#search-btn {
+    border: none;
+    color: var(--white);
+    font-size: 16px;
+    height: 100%;
+    width: 20%;
+    cursor: pointer;
+    background-color: var(--black);
+    transition: .5s;
+}
+
+#search-btn:hover {
+    color: var(--black);
+    background-color: var(--grey);
+}
+
+#search-results-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 70%;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-y: scroll;
+    height: 60vh;
+}
+
+.filters-container {
+    flex-basis: 30%;
+}
+
+legend {
+    color: var(--white);
+}
+
+#genres,
+#platforms {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--white);
+}
+
+#genres li,
+#platforms li {
+    background-color: none;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+fieldset legend {
+    font-weight: bold;
+}
+
+.filter-option {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.filter-option label {
+    display: block;
+    padding: 5px;
+    background-color: rgba(0, 255, 0, 0.2);
+    cursor: pointer;
+}
+
+.filter-option input[type="checkbox"] {
+    display: none;
+}
+
+.filter-option.active label {
+    background-color: rgba(0, 255, 0, 0.5);
+}
+
+.filter-option.active label span {
+    color: #fff;
+}
+
+
+.game-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 24em;
+    height: 17em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    font-family: Arial, sans-serif;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease-in-out, margin 0.3s ease-in-out;
+
+
+}
+
+.game-container:hover {
+    transition: .5s;
+    background-color: #fff;
+}
+
+
+.game-cover {
+    position: absolute;
+    transition: .5s;
+
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.game-container:hover .game-cover {
+    height: 105%;
+    width: 105%;
+}
+
+.game-details {
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-title {
+    font-size: 18px;
+    top: 50%;
+    font-weight: bold;
+    position: absolute;
+    background-color: ;
+}
+
+.game-container:hover .game-title {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+
+.game-more {
+    display: none;
+    margin-top: 10px;
+    font-size: 16px;
+    color: var(--white);
+    background-color: var(--black);
+    padding: .5em 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.game-more:hover {
+    color: var(--black);
+    background-color: var(--white);
+}
+
+
+
+
+.game-container:hover .game-more {
+    display: block;
+}
+
+.game-container:hover .game-more {
+    margin-top: 5px;
+}
+
+.game-container-expanded {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+
+.game-container-expanded .game-details {
+    height: calc(100% - 200px);
+}
+
+.game-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: var(--white);
+    background-color: var(--black);
+    padding: .6em;
+}
+
+.game-buy {
+    display: block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #ff5252;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.game-buy:hover {
+    background-color: #e60000;
 }

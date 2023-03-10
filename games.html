@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/bb746328b1.js" crossorigin="anonymous"></script>
+    <script defer src="/js/access.js"></script>
     <link rel="stylesheet" href="https://use.typekit.net/zmn3hlc.css">
     <title>GameHub</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="/js/access.js"></script>
 </head>
 
-<body class="body-index">
+<body class="body-games">
     <header class="header">
         <div class="logo">
             <img src="assets/img_logo_full_md.png" alt="Gamehub logo" />
@@ -46,13 +46,22 @@
             </ul>
         </nav>
     </header>
-    <main class="main-index">
-        <div id="featured-game" class="game-container">
-            <h1 id="game-title"></h1>
-            <img id="game-cover" src="" alt="Game cover">
+    <main class="main-games">
+        <div class="search-container">
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Search for games">
+                <button type="submit" id="search-btn"><i class="fa-solid fa-search"></i></button>
+            </form>
+            <div class="filter-container">
+                <fieldset>
+                    <legend>Genres</legend>
+                    <ul id="genres"></ul>
+                </fieldset>
+            </div>
         </div>
-
+        <div id="search-results-container"></div>
     </main>
+
     <footer>
         <div class="row">
             <div class="footer-container links">
