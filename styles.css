@@ -10,6 +10,8 @@
 body {
     background-color: var(--darkblue);
     font-family: Rift, Impact, 'Arial Narrow Bold', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 h1,
@@ -192,6 +194,30 @@ li.dropdown:hover .dropdown-menu {
 .fa-cart-shopping {
     display: inline-block;
     vertical-align: middle;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.cart-item span {
+    font-size: 18px;
+}
+
+.remove-game {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.total {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
 }
 
 .legal-text {
@@ -377,6 +403,28 @@ fieldset legend {
 
 .filter-option.active label span {
     color: #fff;
+}
+
+.filter-dropdown {
+    display: none;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.filter-container.open .filter-dropdown {
+    display: block;
+}
+
+.toggle-icon {
+    cursor: pointer;
+}
+
+.filter-container.open .toggle-icon:before {
+    content: '-';
+}
+
+.filter-container .toggle-icon:before {
+    content: '+';
 }
 
 

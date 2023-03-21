@@ -35,14 +35,17 @@
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="cart.html" class="dropdown-toggle"><i class="fa-solid fa-cart-shopping fa-lg"
-                            alt="Shopping Cart"></i></a>
-                    <div id="nav-dropdown" class="dropdown-menu">
+                    <a href="cart.html" class="dropdown-toggle">
+                        <i class="fa-solid fa-cart-shopping fa-lg" alt="Shopping Cart"></i>
+                    </a>
+                    <div id="nav-cart-dropdown" class="dropdown-menu">
                         <div id="nav-cart">
                             <p>Cart is empty</p>
                         </div>
                     </div>
                 </li>
+
+
             </ul>
         </nav>
     </header>
@@ -54,8 +57,10 @@
             </form>
             <div class="filter-container">
                 <fieldset>
-                    <legend>Genres</legend>
-                    <ul id="genres"></ul>
+                    <legend>Genres <span class="toggle-icon"></span></legend>
+                    <div class="filter-dropdown">
+                        <ul id="genres"></ul>
+                    </div>
                 </fieldset>
             </div>
         </div>
