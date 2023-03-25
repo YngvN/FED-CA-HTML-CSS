@@ -8,15 +8,20 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     background-color: var(--darkblue);
     font-family: Rift, Impact, 'Arial Narrow Bold', sans-serif;
     margin: 0;
     padding: 0;
 }
 
+
+
 h1,
 h2,
-h3 {
+h3,
+p {
     color: var(--white);
 }
 
@@ -31,15 +36,20 @@ h2 {
 main {
     display: flex;
     flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
     padding: 1em;
     margin-bottom: .5em;
-
+    max-width: 1400px;
+    min-height: 100vh;
 }
 
-.main-profile {
-    background-color: var(--grey);
-    max-width: 50em;
+header {
+    max-width: 1500px;
+    min-height: 5em;
 }
+
+
 
 .header {
     display: flex;
@@ -56,6 +66,10 @@ a {
 .logo img {
     height: 10em;
     width: auto;
+}
+
+.logo {
+    padding: 2em;
 }
 
 header {
@@ -99,6 +113,20 @@ nav li,
     transition: .5s;
     background-color: var(--darkgrey);
 
+
+}
+
+.nav-btn {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    font-family: Rift, Impact, 'Arial Narrow Bold', sans-serif;
+    font-size: large;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 3px;
+    width: auto
 }
 
 nav li:hover,
@@ -178,6 +206,7 @@ li.dropdown:hover .dropdown-menu {
     font-size: large;
 }
 
+
 .dropdown {
     position: relative;
     justify-content: center;
@@ -206,6 +235,10 @@ li.dropdown:hover .dropdown-menu {
 
 .cart-item span {
     font-size: 18px;
+}
+
+#empty-cart {
+    color: black;
 }
 
 .remove-game {
@@ -305,7 +338,6 @@ footer {
     flex-direction: row;
     height: 3em;
     width: 100%;
-    border-style: inset;
 }
 
 #search-input {
@@ -512,3 +544,181 @@ footer {
 }
 
 #sale-games {}
+
+.profile-container {
+    background-color: black;
+}
+
+
+#payment-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    height: 70%;
+    width: 70%;
+
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.8);
+    /* frosted glass effect */
+    transition: opacity 0.5s, visibility 0.5s;
+    padding: 2em;
+}
+
+#payment-container.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#payment-form {
+    display: flex;
+    flex-direction: column;
+    background-color: #36383f;
+    color: var(--white);
+    padding: 1em;
+    height: 80%;
+    width: 80%;
+}
+
+
+
+#close-payment-btn {
+    position: absolute;
+    right: 15%;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 0;
+}
+
+#close-payment-btn:hover {
+    color: #ccc;
+}
+
+#payment-form label {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-top: 1rem;
+}
+
+#payment-form input {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+#payment-form input:focus {
+    outline: none;
+    box-shadow: 0 0 3px #ccc;
+}
+
+#pay-btn {
+    background-color: #0275d8;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#pay-btn:hover {
+    background-color: #025aa5;
+}
+
+.main-profile {
+    padding: 2rem;
+    text-align: center;
+}
+
+.main-profile h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.profile-container {
+    background-color: black;
+    border-radius: 5px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.profile-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.profile-child {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.profile-child h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.profile-child p {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+#profile-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#profile-form label {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+#profile-form input {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #f1f1f1;
+    color: #333;
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 30rem;
+}
+
+#profile-form button[type="submit"] {
+    background-color: black;
+    color: #fff;
+    font-family: Rift, Impact, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border: var(--white);
+    border-style: outset;
+    cursor: pointer;
+    width: 100%;
+    max-width: 20rem;
+
+}
+
+#profile-form button[type="submit"]:hover {
+    background-color: #025aa5;
+}
+
+@media screen and (max-width: 600px) {
+    .logo {
+        display: none;
+    }
+}

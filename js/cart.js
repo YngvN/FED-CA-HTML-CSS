@@ -1,9 +1,7 @@
-import { games } from "./index.js";
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-let cart = [];
-
-export const addToCart = (gameId, gameTitle, gamePrice) => {
-  const game = { id: gameId, name: gameTitle, price: gamePrice };
+export const addToCart = (gameId, gameTitle, gamePrice, gameCover, gameDescription) => {
+  const game = { id: gameId, name: gameTitle, price: gamePrice, cover: gameCover, description: gameDescription };
 
   cart.push(game);
   localStorage.setItem("cart", JSON.stringify(cart));
@@ -13,7 +11,9 @@ export const addToCart = (gameId, gameTitle, gamePrice) => {
   console.log(`Game ${gameTitle} added to cart.`);
 };
 
-const removeGame = (gameId) => {
+
+
+export const removeGame = (gameId) => {
   cart = cart.filter((game) => game.id !== gameId);
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartDisplay();
@@ -28,7 +28,7 @@ export const updateCartDisplay = () => {
   cartIcon.dataset.count = cart.length;
 
   if (cart.length === 0) {
-    navCart.innerHTML = "<p>Cart is empty</p>";
+    navCart.innerHTML = "<p id='empty-cart'>Cart is empty</p>";
     return;
   }
 
@@ -59,9 +59,10 @@ export const updateCartDisplay = () => {
   totalPriceDiv.textContent = `Total: $${totalPrice.toFixed(2)}`;
 
   const paymentButton = document.createElement("button");
+  paymentButton.classList.add("nav-btn");
   paymentButton.textContent = "Go to payment";
   paymentButton.addEventListener("click", () => {
-    window.location.href = "payment.html";
+    window.location.href = "cart.html";
   });
 
   fragment.appendChild(totalPriceDiv);

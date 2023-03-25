@@ -3,6 +3,8 @@ import { buildSearchUrl } from "./api.js";
 import { addToCart } from "./cart.js";
 import { updateCartDisplay } from "./cart.js";
 
+updateCartDisplay();
+
 
 const gameList = document.getElementById("featured-list");
 const saleList = document.getElementById("sale-list");
@@ -48,20 +50,21 @@ featuredGameContainer.appendChild(gameList);
 // Find the "Add to Cart" buttons
 const addToCartButtons = document.querySelectorAll(".game-buy");
 
-// Add a click event listener to each button
 addToCartButtons.forEach((button) => {
-    button.addEventListener("click", (event) => {
-        // Get the game ID, title, and price from the data attributes
-        const gameId = event.target.dataset.id;
-        const gameTitle = event.target.closest(".game-container").querySelector(".game-title").textContent;
-        const gamePrice = event.target.closest(".game-container").querySelector(".game-price span").textContent.slice(2);
-        console.log("Adding " + gameTitle + " to cart")
-        // Add the game to the cart
-        addToCart(gameId, gameTitle, gamePrice);
-        updateCartDisplay();
-    });
-
+  button.addEventListener("click", (event) => {
+    // Get the game ID, title, price, cover, and description from the data attributes
+    const gameId = event.target.dataset.id;
+    const gameTitle = event.target.closest(".game-container").querySelector(".game-title").textContent;
+    const gamePrice = event.target.closest(".game-container").querySelector(".game-price span").textContent.slice(2);
+    const gameCover = event.target.closest(".game-container").querySelector(".game-cover").getAttribute("src");
+    const gameDescription = event.target.closest(".game-container").querySelector(".game-description").textContent;
+    console.log("Adding " + gameTitle + " to cart");
+    // Add the game to the cart
+    addToCart(gameId, gameTitle, gamePrice, gameCover, gameDescription);
+    updateCartDisplay();
+  });
 });
+
 
 console.log("index.js loaded")
 

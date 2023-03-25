@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,65 +10,88 @@
     <title>GameHub</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="body_index img_bg">
+
+<body id="body-cart">
     <header class="header">
-        <!-- Logo -->
-        <img src="assets/img_logo_full_md.png" class="logo_full" alt="Gamehub"/>
-        <!-- Desktop Navbar -->
-        <nav class="nav_dt">
-            <ul class="menu_dt">
-                <li><a href="index.html" class="active_dt">Home</a></li>
+        <div class="logo">
+            <img src="assets/img_logo_full_md.png" alt="Gamehub logo" />
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="games.html">Games</a></li>
-                <li><a href="profile.html"><i class="fa-regular fa-user fa-lg" alt="Profile"></i></a></li>
-                <li><a href="cart.html"><i class="fa-solid fa-cart-shopping fa-lg" alt="Shopping Cart"></i></a></li>
+                <li class="dropdown">
+                    <a href="profile.html" class="dropdown-toggle">Profile</a>
+                    <div id="nav-dropdown" class="dropdown-menu">
+                        <form>
+                            <input type="email" name="email" placeholder="Email">
+                            <input type="password" name="password" placeholder="Password">
+                            <button type="submit">Log in</button>
+                        </form>
+                        <button class="create-user-btn" type="button"
+                            onclick="window.location.href='profile.html'">Create
+                            user</button>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="active dropdown-toggle">
+                        <i class="fa-solid fa-cart-shopping fa-lg" alt="Shopping Cart"></i>
+                    </a>
+                    <div id="nav-cart-dropdown" class="dropdown-menu">
+                        <div id="nav-cart">
+                            <p>Cart is empty</p>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
-    <!-- Main content -->
-    <main>
-    </main>
-        <!-- Mobile Navbar -->
-        <div class="nav_mb">
-            <!-- Hamburger Menu -->
-            <input class="side-menu" type="checkbox" id="side-menu"/>
-            <a><label class="icon_hamb" for="side-menu"><span class="hamb-line"></span></label></a> 
-            <div class="nav_hamb">
-                <div class="menu_grid">
-                <img src="assets/img_logo_full_md.png" class="logo_mb_nav" alt="Gamehub"/>
-                <div class="menu_hamb">
-                    <b href="index.html" class="active_mb">Home</b>
-                    <b href="games.html">Games</b>
-                    <b href="about.html">About</b>
-                    <b href="contact.html">Contact</b>
-                </div>
-            </div>
-                <p class="legal_text_mb">© 2022, GameHub, Inc. All rights reserved. GameHub, the GameHub logo and your mom are trademarks or registered trademarks of GameHub, Inc. in my moms garage. Other brands or product names are the trademarks of their respective owners. Non-garage transactions go through my mom since I'm not allowed to anymore. </p> 
-            </div>
-            <!-- Footer Navbar -->
-            <a href="games.html" class="footer_nav_hover"><img src="assets/img_icon_games.png" class="icon_games" alt="Games"/></a>
-            <a href="profile.html" class="footer_nav_hover"><i class="fa-regular fa-user fa-lg" alt="Profile"></i></a>
-            <a href="cart.html" class="footer_nav_hover"><i class="fa-solid fa-cart-shopping fa-lg" alt="Shopping Cart"></i></a>
+    <main id="main-cart">
+        <div id="cart-display">          
         </div>
-<!-- ----------------------------------------------------------------------------- -->
-    <footer>   
-            <!-- ----------------------------------------------------------------------------- -->
-            <!-- Footer desktop -->
-            <div class="nav_about_contact">
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
+        <div id="payment-container" class="form-container">
+            <form action="" id="payment-form">      
+                <h2>Payment</h2>
+                <button id="close-payment-btn"><i class="fas fa-times"></i></button>
+                <label for="card-number">Card Number:</label>
+                <input type="text" id="card-number" name="card-number">
+                <label for="expiry-date">Expiry Date:</label>
+                <input type="text" id="expiry-date" name="expiry-date">
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv">
+                <button id="pay-btn" type="submit">Pay</button>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <div class="row">
+            <div class="footer-container links">
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
             </div>
-            <div class="social_media">
-                <b href="contact.html"><i class="fa-brands fa-square-facebook"></i></b>
-                <b href="contact.html"><i class="fa-brands fa-square-twitter"></i></b>
+            <div class="footer-container social-media">
+                <ul>
+                    <li><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-square-twitter"></i></a></li>
+                </ul>
             </div>
-            </div>  
-                <p class="legal_text">© 2022, GameHub, Inc. All rights reserved. GameHub, the GameHub logo and your mom are trademarks or registered trademarks of GameHub, Inc. in my moms garage. Other brands or product names are the trademarks of their respective owners. Non-garage transactions go through my mom since I'm not allowed to anymore. </p>    
-            <div class="extra_nav">
-                <b href="tos.html" >Terms of Service</b>
-                <b href="pp.html">Privacy Policy</b>
-                <b href="refund.html">Store Refund Policy</b>
-            </div> 
+        </div>
+        <p class="legal-text">© 2022, GameHub, Inc. All rights reserved. GameHub, the GameHub logo and your mom are
+            trademarks or registered trademarks of GameHub, Inc. in my moms garage. Other brands or product names are
+            the trademarks of their respective owners. Non-garage transactions go through my mom since I'm not allowed
+            to anymore. </p>
+        <div class="footer-container legal">
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Store Refund Policy</a>
+        </div>
     </footer>
-<!-- ----------------------------------------------------------------------------- -->
+    <script defer src="/js/payment.js" type="module"></script>
+    <script defer src="/js/cart.js " type="module"></script>
+    <script defer src="/js/api.js" type="module"></script>
+    <script defer src="/js/utility.js" type="module"></script>
 </body>
+
 </html>
