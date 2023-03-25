@@ -45,31 +45,61 @@ main {
 }
 
 header {
-    max-width: 1500px;
     min-height: 5em;
 }
 
 
 
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
+.header {}
 
 a {
     text-decoration: none;
     color: var(--white);
 }
 
-.logo img {
-    height: 10em;
-    width: auto;
+#complete-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
-.logo {
-    padding: 2em;
+#logo {
+    display: flex;
+    background-image: url('assets/img_logo_notext_whitebg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 230px;
+    height: 220px;
+}
+
+#logo-text {
+    background-image: url('assets/img_logo_text_lg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 80px;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    #complete-logo {
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+    #logo {
+        display: none;
+    }
+
+    #logo-text {
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        width: 250px;
+        height: 70px;
+        margin-top: 80px;
+    }
 }
 
 header {
@@ -323,6 +353,8 @@ footer {
     padding-top: 20px;
 }
 
+
+
 .search-container {
     display: flex;
     flex-direction: column;
@@ -382,6 +414,7 @@ footer {
 .game-container {
     display: flex;
     flex-direction: column;
+    scroll-snap-align: start;
     align-items: center;
     position: relative;
     width: 300px;
@@ -396,8 +429,8 @@ footer {
 }
 
 .game-container:hover .game-details {
-    top: 20%;
-    height: 20em;
+    top: 55%;
+    height: 30%;
 }
 
 
@@ -418,6 +451,7 @@ footer {
     margin: 10px 0;
     font-size: 18px;
     color: var(--black);
+    bottom: 100px;
 }
 
 .game-details {
@@ -425,26 +459,31 @@ footer {
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: 60%;
+    top: 70%;
     width: 100%;
-    height: 40%;
+    height: 10%;
     background-color: var(--white);
     transition: all 0.3s ease-in-out;
 }
 
+.game-details p {
+    color: black;
+}
+
 .game-cover {
     width: 100%;
-    height: 60%;
+    height: 95%;
     object-fit: cover;
     cursor: pointer;
     transition: .5s;
 }
 
 .game-container:hover .game-cover {
-    height: 70%;
+    height: 100%;
 }
 
 .game-description {
+    visibility: hidden;
     position: absolute;
     bottom: 40%;
     left: 0;
@@ -462,31 +501,31 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 30%;
+    height: 20%;
     background-color: var(--black);
     transition: all 0.3s ease-in-out;
 }
 
-.game-price span {
-    color: var(--white);
-    font-size: 18px;
-    margin: 10px;
-}
-
 .game-buy {
-    font-size: 1.2rem;
-    font-family: Rift, Impact, 'Arial Narrow Bold', sans-serif;
-    background-color: var(--darkblue);
-    color: var(--white);
-    padding: .5em 1em;
-    border-style: outset;
-    border-radius: 5px;
+    background-color: black;
+    color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+    font-family: Rift, Impact, 'Arial Narrow Bold', sans-serif;
+    font-size: large;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 3px;
+    width: auto
 }
 
 .game-buy:hover {
     background-color: blue;
+}
+
+.game-added {
+    background-color: green;
+    color: white;
 }
 
 .cart-item {
@@ -502,6 +541,18 @@ footer {
 
 .cart-text {}
 
+.cart-notification {
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
 .remove-game {
     background-color: transparent;
     border: none;
@@ -515,23 +566,37 @@ footer {
     color: red;
 }
 
+#display-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.list-title {
+    font-size: 2rem;
+}
+
 .index-display {
     display: flex;
     flex-direction: column;
+    scroll-snap-align: start;
     background-color: black;
-    padding: 1em 2em;
-    margin: 1em 0;
+    padding: 1em 1em;
+    margin: 1em 1em;
+    width: fit-content;
 }
 
 .index-list {
     display: flex;
+    scroll-snap-type: x mandatory;
     flex-direction: row;
     overflow-x: scroll;
+    width: 80vw;
+    max-width: 400px;
 }
 
 .index-list .game-container {
     width: 80vw;
-    max-width: 800px;
+    max-width: 400px;
 }
 
 .index-list .game-price {
@@ -539,8 +604,47 @@ footer {
     justify-content: space-around;
 }
 
-.index-list span {
-    font-size: 2rem;
+
+.game-price {
+    display: flex;
+    justify-content: center;
+    font-size: 1.7rem;
+    color: var(--white);
+    left: 0;
+}
+
+.game-numbers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    top: 25px;
+    max-width: 130px;
+    width: 50%;
+    margin-left: -20px;
+}
+
+.game-price-regular {
+    font-size: 1.2rem;
+    color: var(--white);
+    text-decoration: line-through;
+    left: 0;
+}
+
+.game-price-discounted {
+    font-size: 1.7rem;
+    color: red;
+    left: 0;
+}
+
+.game-price-discount {
+    color: var(--white);
+    background-color: red;
+    position: absolute;
+    margin: .5em;
+    padding: 2px 5px;
+    top: 0;
+    left: 0;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.294);
 }
 
 #sale-games {}
@@ -715,10 +819,4 @@ footer {
 
 #profile-form button[type="submit"]:hover {
     background-color: #025aa5;
-}
-
-@media screen and (max-width: 600px) {
-    .logo {
-        display: none;
-    }
 }

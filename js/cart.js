@@ -77,10 +77,16 @@ const showCartNotification = () => {
   notification.classList.add("cart-notification");
   notification.textContent = "Item added to cart";
   cartIcon.parentElement.appendChild(notification);
+
+  // Position the notification element underneath the cart icon
+  const iconRect = cartIcon.getBoundingClientRect();
+  notification.style.position = "absolute";
+  notification.style.top = `${iconRect.bottom}px`;
+  notification.style.right = `${window.innerWidth - iconRect.right}px`;
+
   setTimeout(() => {
     notification.remove();
   }, 2000);
 };
-
 
 console.log("cart.js loaded")
