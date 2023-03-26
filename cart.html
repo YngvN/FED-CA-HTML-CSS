@@ -23,18 +23,24 @@
 </head>
 
 <body id="body-cart">
+    <div class="body-background"></div>
     <header class="header">
-        <div class="logo">
-            <img src="assets/img_logo_full_md.png" alt="Gamehub logo" />
-        </div>
+        <img id="company-logo" src="assets/img_logo_notext_whitebg.png" alt="Gamehub logo">
+        <img id="company-name" src="assets/img_logo_text_lg.png" alt="Gamehub name">
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="games.html">Games</a></li>
+            <ul id="nav-list">
+                <div class="search-container">
+                    <form id="search-form">
+                        <button type="submit" id="search-btn"><i class="fa-solid fa-search"></i></button>
+                        <input type="text" id="search-input" placeholder="Search for games">
+                    </form>
+                </div>
+                <li><i class="fas fa-home"></i><a href="index.html">Home</a></li>
                 <li class="dropdown">
+                    <i class="fas fa-user"></i>
                     <a href="profile.html" class="dropdown-toggle">Profile</a>
                     <div id="nav-dropdown" class="dropdown-menu">
-                        <form>
+                        <form id="nav-login">
                             <input type="email" name="email" placeholder="Email">
                             <input type="password" name="password" placeholder="Password">
                             <button type="submit">Log in</button>
@@ -44,10 +50,8 @@
                             user</button>
                     </div>
                 </li>
-                <li class="dropdown">
-                    <a href="#" class="active dropdown-toggle">
-                        <i class="fa-solid fa-cart-shopping fa-lg" alt="Shopping Cart"></i>
-                    </a>
+                <li class="active dropdown">
+                    <a href="cart.html" class="dropdown-toggle"><i class="fa-solid fa-cart-shopping fa-lg" alt="Shopping Cart"></i>Cart</a>
                     <div id="nav-cart-dropdown" class="dropdown-menu">
                         <div id="nav-cart">
                             <p>Cart is empty</p>
@@ -58,10 +62,8 @@
         </nav>
     </header>
     <main id="main-cart">
-        <div id="cart-display">          
-        </div>
         <div id="payment-container" class="form-container">
-            <form action="" id="payment-form">      
+            <form action="" id="payment-form">
                 <h2>Payment</h2>
                 <button id="close-payment-btn"><i class="fas fa-times"></i></button>
                 <label for="card-number">Card Number:</label>
@@ -72,6 +74,9 @@
                 <input type="text" id="cvv" name="cvv">
                 <button id="pay-btn" type="submit">Pay</button>
             </form>
+        </div>
+        <div id="payment-section-container"></div>
+        <div id="cart-display">          
         </div>
     </main>
     <footer>

@@ -9,6 +9,7 @@ updateCartDisplay();
 
 const gameList = document.getElementById("featured-list");
 const saleList = document.getElementById("sale-list");
+const popularList = document.getElementById("popular-list");
 const featuredGameContainer = document.getElementById("featured-games");
 const pageSize = 20;
 const pageNumber = 1;
@@ -17,127 +18,76 @@ const url = buildSearchUrl("", pageSize, pageNumber);
 
 export const games = await fetchData(url);
 
-// Shuffle the games array randomly
 const shuffledGames = games.sort(() => 0.5 - Math.random());
 
-// Select the first 5 games for featured
 const featured = shuffledGames.slice(0, 5);
 
-// Select the next 10 games for sale
 const sale = shuffledGames.slice(5, 15);
 
-// Select the next 10 games for popular
 const popular = shuffledGames.slice(15, 25);
 
-// Create a new game item for each game in the featured array
-for (let i = 0; i < featured.length; i++) {
-  const game = featured[i];
+function renderGameList(games, list, discountPercentage = 0) {
+  for (let i = 0; i < games.length; i++) {
+    const game = games[i];
 
-  const gameItem = document.createElement("div");
-  gameItem.innerHTML = `
-    <div id="game-container-index" class="game-container">
-      <img class="game-cover" src="${game.background_image}" alt="${game.name}" />
-      
-      <div class="game-details">
-        <h3 class="game-title">${game.name}</h3>
-        <p id="view-more">View more</p>
-        <p class="game-description">${game.description ? game.description : 'Description not available'}</p>
-      </div>
-      <div class="game-price">
-        <span>$ ${game.price}</span>
-        <button class="game-buy" data-id="${game.id}">Add to Cart</button>
-      </div>
-    </div>
-  `;
-
-  // Add the new game item to the featured list
-  gameList.appendChild(gameItem);
-}
-
-// Create a new game item for each game in the sale array
-for (let i = 0; i < sale.length; i++) {
-  const game = sale[i];
-
-  // Generate a random discount percentage between 5 and 30%
-  const discountPercentage = Math.floor(Math.random() * 26) + 5;
-
-  // Calculate the discounted price based on the discount percentage
-  const discountedPrice = (game.price * (100 - discountPercentage)) / 100;
-
-  const gameItem = document.createElement("div");
-  gameItem.innerHTML = `
-    <div id="game-container-index" class="game-container">
-      <img class="game-cover" src="${game.background_image}" alt="${game.name}" />
-      <span class="game-price-discount">${discountPercentage}% off</span>
-      <div class="game-details">
-        <h3 class="game-title">${game.name}</h3>
-        <p id="view-more">View more</p>
-        <p class="game-description">${game.description ? game.description : 'Description not available'}</p>
-      </div>
-      <div class="game-price">
+    let priceHTML;
+    if (discountPercentage > 0) {
+      const discountedPrice = (game.price * (100 - discountPercentage)) / 100;
+      priceHTML = `
         <div class="game-numbers">
           <span class="game-price-regular">$ ${game.price}</span>
           <span class="game-price-discounted">$ ${discountedPrice.toFixed(2)}</span>
         </div>
-        <button class="game-buy" data-id="${game.id}">Add to Cart</button>
-      </div>
-
-    </div>
-  `;
-
-  // Add the new game item to the sale list
-  saleList.appendChild(gameItem);
-}
-
-
-
-// Create a new game item for each game in the popular array
-for (let i = 0; i < popular.length; i++) {
-  const game = popular[i];
-
-  const gameItem = document.createElement("div");
-  gameItem.innerHTML = `
-    <div id="game-container-index" class="game-container">
-      <img class="game-cover" src="${game.background_image}" alt="${game.name}" />
-      
-      <div class="game-details">
-        <h3 class="game-title">${game.name}</h3>
-        <p id="view-more">View more</p>
-        <p class="game-description">${game.description ? game.description : 'Description not available'}</p>
-      </div>
-      <div class="game-price">
+        <span class="game-price-discount">${discountPercentage}% off</span>
+      `;
+    } else {
+      priceHTML = `
         <span>$ ${game.price}</span>
-        <button class="game-buy" data-id="${game.id}">Add to Cart</button>
-      </div>
-    </div>
-  `;
+      `;
+    }
 
-  // Add the new game item to the popular list
-  const popularList = document.getElementById("popular-list");
-  popularList.appendChild(gameItem);
+    const gameItem = document.createElement("div");
+    gameItem.innerHTML = `
+      <div id="game-container-index" class="game-container">
+        <img class="game-cover" src="${game.background_image}" alt="${game.name}" />
+        <div class="game-details">
+          <h3 class="game-title">${game.name}</h3>
+          <p id="view-more">View more</p>
+          <p class="game-description">${game.description ? game.description : 'Description not available'}</p>
+        </div>
+        <div class="game-price">
+          ${priceHTML}
+          <button class="game-buy" data-id="${game.id}">Add to Cart</button>
+        </div>
+      </div>
+    `;
+
+    const container = gameItem.querySelector(".game-container");
+    const imageUrl = game.background_image;
+
+    list.appendChild(gameItem);
+
+    addBackgroundImage(container, imageUrl);
+  }
 }
 
+// Call the function for each list
+renderGameList(featured, gameList);
+renderGameList(sale, saleList, Math.floor(Math.random() * 26) + 5);
+renderGameList(popular, popularList);
 
-
-// Add the list to the featured game container
-featuredGameContainer.appendChild(gameList);
-
-// Find the "Add to Cart" buttons
 const addToCartButtons = document.querySelectorAll(".game-buy");
 
 addToCartButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
-    // Get the game ID, title, price, cover, and description from the data attributes
     const gameId = event.target.dataset.id;
     const gameTitle = event.target.closest(".game-container").querySelector(".game-title").textContent;
     const gamePrice = event.target.closest(".game-container").querySelector(".game-price span").textContent.slice(2);
     const gameCover = event.target.closest(".game-container").querySelector(".game-cover").getAttribute("src");
     const gameDescription = event.target.closest(".game-container").querySelector(".game-description").textContent;
 
-    // Add the game to the cart
     addToCart(gameId, gameTitle, gamePrice, gameCover, gameDescription);
 
-    // Update the button text and style to indicate that the game has been added
     button.classList.add("game-added");
     button.textContent = "Added";
     showCartNotification();
@@ -153,77 +103,79 @@ const searchButton = document.getElementById("search-btn");
 const displayContainer = document.getElementById("display-container");
 
 
-searchForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-
-  // Extract the search term from the input field
-  const searchTerm = searchInput.value.trim();
-
-  // If the search term is empty, show the display container and return false to prevent further execution
-  if (!searchTerm) {
-    searchResultsContainer.innerHTML = "";
-    searchResultsContainer.style.opacity = "0";
-    displayContainer.style.opacity = "1";
-    return false;
-  }
-
-  // Build a search URL using the search term and a high page size value
-  const searchUrl = buildSearchUrl(searchTerm, 50, 1);
-
-  // Fetch the data using the search URL
-  const searchResults = await fetchData(searchUrl);
-
-  // Show the search results container and fade out the display container
-  searchResultsContainer.style.opacity = "1";
-  displayContainer.style.opacity = "0";
-
-  // Clear the search results container
+function renderSearchResults(searchResults) {
   searchResultsContainer.innerHTML = "";
 
-  // Display the search results in a list, limiting the number of results to 20
-  for (let i = 0; i < Math.min(searchResults.length, 20); i++) {
-    const searchResult = searchResults[i];
+  renderGameList(searchResults, searchResultsContainer);
 
-    const searchResultItem = document.createElement("div");
-    searchResultItem.innerHTML = `
-      <div class="game-container">
-        <img class="game-cover" src="${searchResult.background_image}" alt="${searchResult.name}" />
-        
-        <div class="game-details">
-          <h3 class="game-title">${searchResult.name}</h3>
-          <p id="view-more">View more</p>
-          <p class="game-description">${searchResult.description ? searchResult.description : 'Description not available'}</p>
-        </div>
-        <div class="game-price">
-          <span>$ ${searchResult.price}</span>
-          <button class="game-buy" data-id="${searchResult.id}">Add to Cart</button>
-        </div>
-      </div>
-    `;
-
-    // Add the new search result item to the list
-    searchResultsContainer.appendChild(searchResultItem);
-  }
-
-  // Find the "Add to Cart" buttons in the search results
   const addToCartButtons = searchResultsContainer.querySelectorAll(".game-buy");
-
   addToCartButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
-      // Get the game ID, title, price, cover, and description from the data attributes
       const gameId = event.target.dataset.id;
       const gameTitle = event.target.closest(".game-container").querySelector(".game-title").textContent;
       const gamePrice = event.target.closest(".game-container").querySelector(".game-price span").textContent.slice(2);
       const gameCover = event.target.closest(".game-container").querySelector(".game-cover").getAttribute("src");
       const gameDescription = event.target.closest(".game-container").querySelector(".game-description").textContent;
 
-      // Add the game to the cart
       addToCart(gameId, gameTitle, gamePrice, gameCover, gameDescription);
       updateCartDisplay();
     });
   });
+}
+
+searchForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const searchTerm = searchInput.value.trim();
+
+  if (!searchTerm) {
+    searchResultsContainer.innerHTML = "";
+    searchResultsContainer.style.opacity = "0";
+    displayContainer.style.position = "relative";
+    displayContainer.style.opacity = "1";
+    displayContainer.style.visibility ="visible";
+
+    return false;
+  }
+
+  const searchUrl = buildSearchUrl(searchTerm, 50, 1);
+
+  const searchResults = await fetchData(searchUrl);
+
+  renderSearchResults(searchResults);
+
+  searchResultsContainer.style.opacity = "1";
+  displayContainer.style.opacity = "0";
+  displayContainer.style.position = "absolute";
+  displayContainer.style.visibility ="hidden";
 });
 
+
+function addBackgroundImage(container, imageUrl) {
+  const bodyBackgrounds = document.querySelectorAll(".body-background");
+  const opacity = 0.8;
+
+  container.addEventListener("mouseover", () => {
+    bodyBackgrounds.forEach((bg) => {
+      bg.style.backgroundImage = `url(${imageUrl})`;
+      bg.style.opacity = opacity;
+      bg.style.overflowY = "hidden";
+      bg.classList.add("show");
+    });
+  });
+
+  container.addEventListener("mouseleave", () => {
+    bodyBackgrounds.forEach((bg) => {
+
+      bg.style.opacity = "";
+      bg.style.overflowY = "";
+      bg.classList.remove("show");
+      setTimeout(() => {
+          bg.style.backgroundImage = "";
+      }, 150);
+    });
+  });
+}
 
 console.log("index.js loaded")
 

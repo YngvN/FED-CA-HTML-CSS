@@ -22,17 +22,22 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body id="body-index">
+<body id="body-profile">
+    <div class="body-background"></div>
     <header class="header">
-        <div class="logo">
-            <img src="assets/img_logo_full_md.png" alt="Gamehub logo" />
-        </div>
+        <img id="company-logo" src="assets/img_logo_notext_whitebg.png" alt="Gamehub logo">
+        <img id="company-name" src="assets/img_logo_text_lg.png" alt="Gamehub name">
         <nav>
-            <ul>
+            <ul id="nav-list">
+                <div class="search-container">
+                    <form id="search-form">
+                        <button type="submit" id="search-btn"><i class="fa-solid fa-search"></i></button>
+                        <input type="text" id="search-input" placeholder="Search for games">
+                    </form>
+                </div>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="games.html">Games</a></li>
-                <li class="dropdown">
-                    <a href="#" class=" active dropdown-toggle">Profile</a>
+                <li class="active dropdown">
+                    <a href="#" class=" dropdown-toggle">Profile</a>
                     <div id="nav-dropdown" class="dropdown-menu">
                         <form>
                             <input type="email" name="email" placeholder="Email">

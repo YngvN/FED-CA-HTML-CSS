@@ -3,6 +3,7 @@ import { removeGame } from "./cart.js";
 
 const displayCartContents = () => {
   const cartDisplay = document.getElementById("cart-display");
+  const paymentSectionContainer = document.getElementById("payment-section-container");
   cartDisplay.innerHTML = "";
 
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -47,7 +48,7 @@ const displayCartContents = () => {
   paymentSection.appendChild(totalPriceDiv);
   paymentSection.appendChild(paymentButton);
 
-  cartDisplay.appendChild(paymentSection);
+  paymentSectionContainer.appendChild(paymentSection);
 
   const removeButtons = document.querySelectorAll(".game-buy");
   removeButtons.forEach((button) => {
@@ -60,25 +61,28 @@ const displayCartContents = () => {
       
     });
   });
+
   const closePaymentBtn = document.getElementById("close-payment-btn");
-const paymentContainer = document.getElementById("payment-container");
-const body = document.getElementById("body-cart");
-const paymentForm = document.getElementById("payment-form");
+  const paymentContainer = document.getElementById("payment-container");
+  const body = document.getElementById("body-cart");
+  const paymentForm = document.getElementById("payment-form");
 
-closePaymentBtn.addEventListener("click", () => {
-  paymentContainer.classList.remove("show");
-  body.classList.remove("frost");
-});
-
-paymentContainer.addEventListener("click", (event) => {
-  if (event.target === paymentContainer || event.target === paymentForm) {
+  closePaymentBtn.addEventListener("click", () => {
     paymentContainer.classList.remove("show");
     body.classList.remove("frost");
-  }
-});
+  });
+
+  paymentContainer.addEventListener("click", (event) => {
+    if (event.target === paymentContainer || event.target === paymentForm) {
+      paymentContainer.classList.remove("show");
+      body.classList.remove("frost");
+    }
+  });
+
   const payButton = document.getElementById("pay-btn");
   payButton.textContent = `Pay $${totalPrice.toFixed(2)}`;
 };
+
 
 
 

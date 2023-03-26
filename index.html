@@ -21,90 +21,89 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body id="body-index">
-    <header class="header">
-        <div id="complete-logo">
-            <div id="logo">
-            </div>
-            <div id="logo-text">
-            </div>
-        </div>
-        <nav>
-            <ul id="nav-list">
-                <div class="search-container">
-                    <form id="search-form">
-                        <button type="submit" id="search-btn"><i class="fa-solid fa-search"></i></button>
-                        <input type="text" id="search-input" placeholder="Search for games">
-                    </form>
-                </div>
-                <li><a href="#" class="active">Home</a></li>
-                <li class="dropdown">
-                    <a href="profile.html" class="dropdown-toggle">Profile</a>
-                    <div id="nav-dropdown" class="dropdown-menu">
-                        <form>
-                            <input type="email" name="email" placeholder="Email">
-                            <input type="password" name="password" placeholder="Password">
-                            <button class="nav-btn" type="submit">Log in</button>
+    <div class="body-background"></div>
+        <header class="header">
+            <img id="company-logo" src="assets/img_logo_notext_whitebg.png" alt="Gamehub logo">
+            <img id="company-name" src="assets/img_logo_text_lg.png" alt="Gamehub name">
+            <nav>
+                <ul id="nav-list">
+                    <div class="search-container">
+                        <form id="search-form">
+                            <button type="submit" id="search-btn"><i class="fa-solid fa-search"></i></button>
+                            <input type="text" id="search-input" placeholder="Search for games">
                         </form>
-                        <button class="create-user-btn" type="button" onclick="window.location.href='profile.html'">Create
-                            user</button>
                     </div>
-                </li>
-                <li class="dropdown">
-                    <a href="cart.html" class="dropdown-toggle">
-                        <i class="fa-solid fa-cart-shopping fa-lg" alt="Shopping Cart"></i>
-                    </a>
-                    <div id="nav-cart-dropdown" class="dropdown-menu">
-                        <div id="nav-cart">
-                            <p>Cart is empty</p>
+                    <li class="active"><i class="fas fa-home"></i><a href="#">Home</a></li>
+                    <li class="dropdown">
+                        <i class="fas fa-user"></i>
+                        <a href="profile.html" class="dropdown-toggle">Profile</a>
+                        <div id="nav-dropdown" class="dropdown-menu">
+                            <form>
+                                <input type="email" name="email" placeholder="Email">
+                                <input type="password" name="password" placeholder="Password">
+                                <button class="nav-btn" type="submit">Log in</button>
+                            </form>
+                            <button class="create-user-btn" type="button" onclick="window.location.href='profile.html'">Create
+                                user</button>
                         </div>
+                    </li>
+                    <li class="dropdown">
+                        <i class="fa-solid fa-cart-shopping fa-lg" alt="Shopping Cart"></i>
+                        <a href="cart.html" class="dropdown-toggle">Cart</a>
+                        <div id="nav-cart-dropdown" class="dropdown-menu">
+                            <div id="nav-cart">
+                                <p>Cart is empty</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main id="main-index">
+            <div id="display-container">
+                <div id="featured-games" class="index-display">
+                    <h2 class="list-title">Featured Games</h2>
+                    <div id="featured-list" class="index-list">
                     </div>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <main id="main-index">
-        <div id="display-container">
-            <div id="featured-games" class="index-display">
-                <h2 class="list-title">Featured Games</h2>
-                <div id="featured-list" class="index-list">
+                </div>
+                <div id="sale-games" class="index-display">
+                    <h2 class="list-title">Sale</h2>
+                    <div id="sale-list" class="index-list">
+                    </div>
+                </div>
+                    <div id="popular-games" class="index-display">
+                    <h2 class="list-title">Best sellers</h2>
+                    <div id="popular-list" class="index-list">
+                    </div>
                 </div>
             </div>
-            <div id="sale-games" class="index-display">
-                <h2 class="list-title">Sale</h2>
-                <div id="sale-list" class="index-list">
+            <div id="search-results-container">            
+            </div>
+        </main>
+        <footer>
+            <div class="row">   
+                <div class="footer-container links">
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-container social-media">
+                    <ul>
+                        <li><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-square-twitter"></i></a></li>
+                    </ul>
                 </div>
             </div>
-                <div id="popular-games" class="index-display">
-                <h2 class="list-title">Best sellers</h2>
-                <div id="popular-list" class="index-list">
-                </div>
-            </div>
-        </div>
-        <div id="search-results-container">            
-        </div>
-    </main>
-    <footer>
-        <div class="row">   
-            <div class="footer-container links">
-                <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-container social-media">
-                <ul>
-                    <li><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-square-twitter"></i></a></li>
-                </ul>
-            </div>
-        </div>
-            <p class="legal-text">© 2022, GameHub, Inc. All rights reserved. GameHub, the GameHub logo and your mom are trademarks or registered trademarks of GameHub, Inc. in my moms garage. Other brands or product names are the trademarks of their respective owners. Non-garage transactions go through my mom since I'm not allowed to anymore. </p>    
-        <div class="footer-container legal">
-            <a href="#" >Terms of Service</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Store Refund Policy</a>
-        </div> 
-    </footer>
+                <p class="legal-text">© 2022, GameHub, Inc. All rights reserved. GameHub, the GameHub logo and your mom are trademarks or registered trademarks of GameHub, Inc. in my moms garage. Other brands or product names are the trademarks of their respective owners. Non-garage transactions go through my mom since I'm not allowed to anymore. </p>    
+            <div class="footer-container legal">
+                <a href="#" >Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Store Refund Policy</a>
+            </div> 
+        </footer>
+
+        
         <script defer src="/js/index.js" type="module"></script>
         <script defer src="/js/cart.js " type="module"></script>
         <script defer src="/js/api.js" type="module"></script>

@@ -42,3 +42,13 @@ export const fetchGameDetails = async (id) => {
   }
 };
 
+// const form = document.getElementById("nav-login");
+
+// form.addEventListener("submit", (event) => {
+//   event.preventDefault();
+
+//   const successMessage = document.createElement("p");
+//   successMessage.textContent = "Success! You have logged in.";
+
+//   form.appendChild(successMessage);
+// });

@@ -10,13 +10,45 @@
 body {
     display: flex;
     flex-direction: column;
-    background: linear-gradient(to bottom right, var(--darkblue), #1A1A1A);
+    align-items: center;
     font-family: Rift, Impact, 'Arial Narrow Bold', sans-serif;
     margin: 0;
     padding: 0;
+    background: linear-gradient(to bottom right, var(--darkblue), var(--darkgrey));
+}
+
+header,
+main,
+footer {
+    width: 90vw;
+    max-width: 1200px;
+}
+
+.body-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-attachment: fixed;
+    background-size: cover;
+    filter: opacity(.1);
+    opacity: .1;
+    transition: opacity 0.1s ease-in-out;
+    mask-image: linear-gradient(to top right, transparent 50%, black 50%);
+    -webkit-mask-image: linear-gradient(to top right, transparent 50%, black 50%);
 }
 
 
+
+.body-background.show {
+    opacity: .1;
+}
+
+.body-background.hide {
+    opacity: 0;
+}
 
 h1,
 h2,
@@ -44,70 +76,56 @@ main {
     min-height: 100vh;
 }
 
+
 header {
-    min-height: 13em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: 10em;
 }
-
-
-
-.header {}
 
 a {
     text-decoration: none;
     color: var(--white);
 }
 
-#complete-logo {
-    position: absolute;
-    top: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
 
-#logo {
-    display: flex;
-    background-image: url('assets/img_logo_notext_whitebg.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 230px;
-    height: 220px;
-}
 
-#logo-text {
-    background-image: url('assets/img_logo_text_lg.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 300px;
-    height: 80px;
-    margin-top: 20px;
-}
+
+
 
 @media screen and (max-width: 600px) {
-    #complete-logo {
-        margin-left: auto;
-        margin-right: auto;
 
-    }
-
-    #logo {
+    #company-logo {
         display: none;
     }
 
-    #logo-text {
-        display: flex;
-        margin-left: auto;
+    #company-name {
+        right: 0;
         margin-right: auto;
-        width: 250px;
-        height: 70px;
-        margin-top: 80px;
+        margin-left: auto;
     }
+
+
+
+
 }
 
-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+#company-logo {
+    position: absolute;
+    height: 10em;
+    padding: .5em;
+    top: 0;
+    width: auto;
+}
+
+#company-name {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: auto;
+    height: 4em;
+    top: 2em;
 }
 
 #nav-list {
@@ -119,6 +137,12 @@ header {
     background-color: var(--darkgrey);
     right: 0;
     top: 0;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.219);
+}
+
+nav i {
+    color: var(--white);
+    padding: .1em;
 }
 
 ul {
@@ -128,12 +152,14 @@ ul {
     align-items: center;
 }
 
-li .active {
+.active {
     background-color: var(--white);
     color: var(--darkgrey);
-    padding: .5em 1em;
-    margin: -1em;
+}
 
+.active a,
+.active i {
+    color: var(--black);
 }
 
 nav li,
@@ -147,6 +173,7 @@ nav li,
 
 }
 
+#payment-section-container button,
 .nav-btn {
     background-color: black;
     color: white;
@@ -165,7 +192,8 @@ nav li:hover,
     background-color: var(--white);
 }
 
-li:hover a {
+li:hover a,
+li:hover i {
     color: var(--darkgrey);
 }
 
@@ -173,6 +201,7 @@ li:hover a {
 
 li.dropdown:hover .dropdown-menu {
     display: block;
+    z-index: 3;
 }
 
 .dropdown-toggle {
@@ -251,10 +280,6 @@ li.dropdown:hover .dropdown-menu {
     outline: none;
 }
 
-.fa-cart-shopping {
-    display: inline-block;
-    vertical-align: middle;
-}
 
 .cart-item {
     display: flex;
@@ -356,6 +381,9 @@ footer {
 
 
 
+
+
+
 .search-container {
     display: flex;
     flex-direction: row;
@@ -377,12 +405,11 @@ footer {
     font-size: 1rem;
     height: 100%;
     padding: .6em;
-    margin-right: -15px;
+    margin-right: -40px;
     border: none;
     color: var(--white);
     padding: em;
     background-color: transparent;
-    border-right: outset;
     width: 0;
     transition: width 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
@@ -391,6 +418,7 @@ footer {
 #search-input:focus,
 .search-container:hover #search-input {
     width: 100%;
+    margin-right: -15px;
 }
 
 #search-btn {
@@ -401,12 +429,12 @@ footer {
     width: 3em;
     cursor: pointer;
     background-color: var(--darkgrey);
-    transition: .5s;
     padding: .6em;
     margin-left: -15px;
 }
 
-#search-btn:hover {
+#search-btn:hover,
+#search-btn:hover i {
     color: var(--black);
     background-color: var(--white);
 }
@@ -423,6 +451,58 @@ footer {
     transition: .5s;
     /* overflow-y: scroll; */
     /* height: 60vh; */
+}
+
+@media screen and (max-width: 600px) {
+    #nav-list {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        position: fixed;
+        padding: 0;
+        width: 90vw;
+    }
+
+    #nav-list li {
+        flex-basis: 33.33%;
+        text-align: center;
+    }
+
+    .search-container {
+        display: flex;
+        flex-direction: row-reverse;
+        flex-wrap: wrap;
+        position: relative;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 15vw;
+    }
+
+    #search-btn {}
+
+    #search-input {
+        position: absolute;
+        top: 38px;
+        height: 100%;
+        opacity: 0;
+        border: none;
+        background-color: var(--darkgrey);
+        width: 80vw;
+        height: 0;
+        transition: .5s;
+        z-index: 3;
+    }
+
+    #search-input:not(:empty),
+    #search-input:focus,
+    .search-container:hover #search-input {
+        width: 80vw;
+        height: 100%;
+        padding: .2em;
+        padding-left: 1em;
+        opacity: 1;
+    }
 }
 
 
@@ -582,7 +662,8 @@ footer {
 #display-container {
     display: flex;
     flex-wrap: wrap;
-    position: absolute;
+    position: relative;
+    transition: .5s;
 }
 
 .list-title {
@@ -673,6 +754,34 @@ footer {
     background-color: black;
 }
 
+#main-cart {
+    background-color: black;
+    margin: .5em;
+}
+
+#payment-section-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    background-color: var(--white);
+    padding: 1em;
+    align-items: ;
+}
+
+#payment-section-container button {
+    display: block;
+}
+
+.total {
+    display: block;
+}
+
+#cart-display {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 
 #payment-container {
     display: flex;
@@ -685,6 +794,8 @@ footer {
     position: fixed;
     height: 70%;
     width: 70%;
+    top: 8em;
+    border-radius: 5px;
 
     justify-content: center;
     backdrop-filter: blur(10px);
