@@ -664,6 +664,8 @@ footer {
     flex-wrap: wrap;
     position: relative;
     transition: .5s;
+    width: fit-content;
+    width: 80vw;
 }
 
 .list-title {
