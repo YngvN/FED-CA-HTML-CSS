@@ -687,17 +687,21 @@ footer {
     flex-direction: row;
     overflow-x: scroll;
     width: 80vw;
-    max-width: 400px;
+    max-width: 800px;
 }
 
 .index-list .game-container {
     width: 80vw;
-    max-width: 400px;
+    max-width: 800px;
 }
 
 .index-list .game-price {
     flex-direction: row;
     justify-content: space-around;
+}
+
+.game-price button {
+    margin: 1em;
 }
 
 /* #featured-games {

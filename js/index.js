@@ -96,6 +96,8 @@ addToCartButtons.forEach((button) => {
 });
 
 
+
+
 const searchForm = document.getElementById("search-form");
 const searchInput = document.getElementById("search-input");
 const searchResultsContainer = document.getElementById("search-results-container");
@@ -110,7 +112,7 @@ function renderSearchResults(searchResults) {
 
   const addToCartButtons = searchResultsContainer.querySelectorAll(".game-buy");
   addToCartButtons.forEach((button) => {
-    button.addEventListener("click", (event) => {
+    button.addEventListener("click", async (event) => {
       const gameId = event.target.dataset.id;
       const gameTitle = event.target.closest(".game-container").querySelector(".game-title").textContent;
       const gamePrice = event.target.closest(".game-container").querySelector(".game-price span").textContent.slice(2);
@@ -118,10 +120,15 @@ function renderSearchResults(searchResults) {
       const gameDescription = event.target.closest(".game-container").querySelector(".game-description").textContent;
 
       addToCart(gameId, gameTitle, gamePrice, gameCover, gameDescription);
+
+      button.classList.add("game-added");
+      button.textContent = "Added";
+      showCartNotification();
       updateCartDisplay();
     });
   });
 }
+
 
 searchForm.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -176,6 +183,8 @@ function addBackgroundImage(container, imageUrl) {
     });
   });
 }
+
+
 
 console.log("index.js loaded")
 

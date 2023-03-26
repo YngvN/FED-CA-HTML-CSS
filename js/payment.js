@@ -1,9 +1,36 @@
 import { updateCartDisplay } from "./cart.js";
 import { removeGame } from "./cart.js";
 
+const cartDisplay = document.getElementById("cart-display");
+const paymentSectionContainer = document.getElementById("payment-section-container");
+const totalPriceDiv = document.createElement("div");
+const paymentButton = document.createElement("button");
+
+const createPaymentSection = (totalPrice) => {
+  totalPriceDiv.classList.add("total");
+  totalPriceDiv.textContent = `Total: $${totalPrice.toFixed(2)}`;
+
+  paymentButton.textContent = "Go to Payment";
+  paymentButton.addEventListener("click", () => {
+    const paymentContainer = document.getElementById("payment-container");
+    const body = document.getElementById("body-cart");
+    paymentContainer.classList.add("show");
+  });
+
+  const paymentSection = document.createElement("div");
+  paymentSection.classList.add("payment-section");
+  paymentSection.appendChild(totalPriceDiv);
+  paymentSection.appendChild(paymentButton);
+
+  paymentSectionContainer.appendChild(paymentSection);
+};
+
+const updatePaymentSection = (totalPrice) => {
+  totalPriceDiv.textContent = `Total: $${totalPrice.toFixed(2)}`;
+  paymentButton.textContent = `Pay $${totalPrice.toFixed(2)}`;
+};
+
 const displayCartContents = () => {
-  const cartDisplay = document.getElementById("cart-display");
-  const paymentSectionContainer = document.getElementById("payment-section-container");
   cartDisplay.innerHTML = "";
 
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -31,24 +58,12 @@ const displayCartContents = () => {
   cartDisplay.innerHTML = gameContainers.join("");
 
   const totalPrice = cart.reduce((total, game) => total + Number(game.price), 0);
-  const totalPriceDiv = document.createElement("div");
-  totalPriceDiv.classList.add("total");
-  totalPriceDiv.textContent = `Total: $${totalPrice.toFixed(2)}`;
 
-  const paymentButton = document.createElement("button");
-  paymentButton.textContent = "Go to Payment";
-  paymentButton.addEventListener("click", () => {
-    const paymentContainer = document.getElementById("payment-container");
-    const body = document.getElementById("body-cart");
-    paymentContainer.classList.add("show");
-  });
-
-  const paymentSection = document.createElement("div");
-  paymentSection.classList.add("payment-section");
-  paymentSection.appendChild(totalPriceDiv);
-  paymentSection.appendChild(paymentButton);
-
-  paymentSectionContainer.appendChild(paymentSection);
+  if (!totalPriceDiv.parentNode) {
+    createPaymentSection(totalPrice);
+  } else {
+    updatePaymentSection(totalPrice);
+  }
 
   const removeButtons = document.querySelectorAll(".game-buy");
   removeButtons.forEach((button) => {
@@ -58,33 +73,20 @@ const displayCartContents = () => {
       removeGame(gameId);
       displayCartContents();
       updateCartDisplay();
-      
+
+      const newTotalPrice = cart.reduce((total, game) => total + Number(game.price), 0);
+      updatePaymentSection(newTotalPrice);
     });
-  });
-
-  const closePaymentBtn = document.getElementById("close-payment-btn");
-  const paymentContainer = document.getElementById("payment-container");
-  const body = document.getElementById("body-cart");
-  const paymentForm = document.getElementById("payment-form");
-
-  closePaymentBtn.addEventListener("click", () => {
-    paymentContainer.classList.remove("show");
-    body.classList.remove("frost");
-  });
-
-  paymentContainer.addEventListener("click", (event) => {
-    if (event.target === paymentContainer || event.target === paymentForm) {
-      paymentContainer.classList.remove("show");
-      body.classList.remove("frost");
-    }
   });
 
   const payButton = document.getElementById("pay-btn");
   payButton.textContent = `Pay $${totalPrice.toFixed(2)}`;
+  payButton.addEventListener("click", () => {
+    localStorage.removeItem("cart");
+    alert("Thank you for your purchase!");
+    window.location.reload();
+  });
 };
-
-
-
 
 displayCartContents();
 updateCartDisplay();
