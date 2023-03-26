@@ -10,7 +10,7 @@
 body {
     display: flex;
     flex-direction: column;
-    background-color: var(--darkblue);
+    background: linear-gradient(to bottom right, var(--darkblue), #1A1A1A);
     font-family: Rift, Impact, 'Arial Narrow Bold', sans-serif;
     margin: 0;
     padding: 0;
@@ -45,7 +45,7 @@ main {
 }
 
 header {
-    min-height: 5em;
+    min-height: 13em;
 }
 
 
@@ -58,6 +58,8 @@ a {
 }
 
 #complete-logo {
+    position: absolute;
+    top: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -105,19 +107,18 @@ a {
 header {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
 }
 
-nav {
+#nav-list {
     display: flex;
     position: fixed;
-    right: 1em;
-    top: 0;
     padding: 0;
-    margin: 0;
-    width: min-content;
+    margin: 1em;
     z-index: 2;
+    background-color: var(--darkgrey);
+    right: 0;
+    top: 0;
 }
 
 ul {
@@ -357,45 +358,59 @@ footer {
 
 .search-container {
     display: flex;
-    flex-direction: column;
-    max-width: 17em;
+    flex-direction: row;
+    align-items: center;
     position: relative;
-    align-self: flex-start;
-    background-color: var(--darkgrey);
-    padding: 1em;
+    padding: 0 1em;
+    height: 100%;
+    transition: .5s;
 }
 
 #search-form {
     display: flex;
     flex-direction: row;
-    height: 3em;
+    height: 100%;
     width: 100%;
 }
 
 #search-input {
     font-size: 1rem;
     height: 100%;
-    width: 80%;
+    padding: .6em;
+    margin-right: -15px;
     border: none;
+    color: var(--white);
+    padding: em;
+    background-color: transparent;
+    border-right: outset;
+    width: 0;
+    transition: width 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
 
-    padding: 0 0.5em;
+#search-input:not(:empty),
+#search-input:focus,
+.search-container:hover #search-input {
+    width: 100%;
 }
 
 #search-btn {
     border: none;
     color: var(--white);
     font-size: 16px;
-    height: 100%;
-    width: 20%;
+    height: 105%;
+    width: 3em;
     cursor: pointer;
-    background-color: var(--black);
+    background-color: var(--darkgrey);
     transition: .5s;
+    padding: .6em;
+    margin-left: -15px;
 }
 
 #search-btn:hover {
     color: var(--black);
-    background-color: var(--grey);
+    background-color: var(--white);
 }
+
 
 #search-results-container {
     display: flex;
@@ -405,6 +420,7 @@ footer {
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
+    transition: .5s;
     /* overflow-y: scroll; */
     /* height: 60vh; */
 }
@@ -424,23 +440,13 @@ footer {
     transition: all 0.3s ease-in-out;
 }
 
-.game-container:hover {
-    background-color: #fff;
-}
 
 .game-container:hover .game-details {
-    top: 55%;
-    height: 30%;
+    top: 65%;
+    height: 20%;
 }
 
 
-.game-cover {
-    width: 100%;
-    height: 60%;
-    object-fit: cover;
-    cursor: pointer;
-    transition: .5s;
-}
 
 .game-container:hover .game-cover {
     height: 70%;
@@ -452,6 +458,12 @@ footer {
     font-size: 18px;
     color: var(--black);
     bottom: 100px;
+}
+
+#view-more {
+    position: absolute;
+    top: 1.2em;
+
 }
 
 .game-details {
@@ -478,7 +490,7 @@ footer {
     transition: .5s;
 }
 
-.game-container:hover .game-cover {
+.game-cover:hover .game-cover {
     height: 100%;
 }
 
@@ -496,8 +508,9 @@ footer {
 
 .game-price {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-evenly;
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -569,11 +582,13 @@ footer {
 #display-container {
     display: flex;
     flex-wrap: wrap;
+    position: absolute;
 }
 
 .list-title {
     font-size: 2rem;
 }
+
 
 .index-display {
     display: flex;
@@ -603,6 +618,11 @@ footer {
     flex-direction: row;
     justify-content: space-around;
 }
+
+/* #featured-games {
+    width: 80vw;
+    max-width: 1000px;
+} */
 
 
 .game-price {

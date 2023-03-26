@@ -44,6 +44,7 @@ searchForm.addEventListener("submit", async (event) => {
         
         <div class="game-details">
           <h3 class="game-title">${searchResult.name}</h3>
+          <p id="view-more">View more</p>
           <p class="game-description">${searchResult.description ? searchResult.description : 'Description not available'}</p>
         </div>
         <div class="game-price">

@@ -29,9 +29,14 @@
             </div>
         </div>
         <nav>
-            <ul>
+            <ul id="nav-list">
+                <div class="search-container">
+                    <form id="search-form">
+                        <button type="submit" id="search-btn"><i class="fa-solid fa-search"></i></button>
+                        <input type="text" id="search-input" placeholder="Search for games">
+                    </form>
+                </div>
                 <li><a href="#" class="active">Home</a></li>
-                <li><a href="games.html">Games</a></li>
                 <li class="dropdown">
                     <a href="profile.html" class="dropdown-toggle">Profile</a>
                     <div id="nav-dropdown" class="dropdown-menu">
@@ -74,6 +79,8 @@
                 <div id="popular-list" class="index-list">
                 </div>
             </div>
+        </div>
+        <div id="search-results-container">            
         </div>
     </main>
     <footer>
