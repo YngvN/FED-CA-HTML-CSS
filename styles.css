@@ -55,13 +55,14 @@ h2,
 h3,
 p {
     color: var(--white);
+    z-index: 0;
 }
 
 
 h1 {}
 
 h2 {
-    z-index: 2;
+    z-index: 0;
 
 }
 
@@ -84,32 +85,104 @@ header {
     min-height: 10em;
 }
 
-a {
+a,
+i {
     text-decoration: none;
     color: var(--white);
 }
 
+nav a,
+#search-btn {
+    display: block;
+    padding: 10px;
 
-
-
-
-
-@media screen and (max-width: 600px) {
-
-    #company-logo {
-        display: none;
-    }
-
-    #company-name {
-        right: 0;
-        margin-right: auto;
-        margin-left: auto;
-    }
+    height: 100%;
 
 
 
 
 }
+
+
+
+.container {
+    background-color: black;
+    margin: 1em;
+    padding: .5em 1em;
+}
+
+#info-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.child {
+    padding: 1em;
+    margin: .5em;
+    border-radius: 10px;
+}
+
+.info-tile p,
+.info-tile h3 {
+    color: var(--white);
+}
+
+.info-tile {
+    display: flex;
+    flex-direction: column;
+    height: 23em;
+    width: 20em;
+    align-items: center;
+    background-color: rgb(30, 30, 30);
+}
+
+.info-tile i {
+    top: 0;
+    color: var(--white);
+    background-color: var(--darkblue);
+    padding: 1em;
+    font-size: 4em;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#user-contact-info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#user-contact-info div {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container label {
+    color: var(--white);
+}
+
+.form-container input {
+    width: auto;
+}
+
+.form-child {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+
+
 
 #company-logo {
     position: absolute;
@@ -127,6 +200,8 @@ a {
     height: 4em;
     top: 2em;
 }
+
+
 
 #nav-list {
     display: flex;
@@ -153,25 +228,38 @@ ul {
 }
 
 .active {
-    background-color: var(--white);
-    color: var(--darkgrey);
+    background-color: var(--grey);
+    color: var(--white);
+}
+
+.active:hover a,
+.active:hover i {
+    color: var(--white);
+    background-color: var(--grey);
 }
 
 .active a,
 .active i {
-    color: var(--black);
+    color: var(--white);
+    background-color: var(--grey);
+}
+
+footer a {
+    padding: .5em;
+    margin: .5em;
 }
 
 nav li,
 .footer-container li {
     position: relative;
-    padding: .5em 1em;
     margin: 0;
     transition: .5s;
     background-color: var(--darkgrey);
 
 
 }
+
+
 
 #payment-section-container button,
 .nav-btn {
@@ -187,14 +275,15 @@ nav li,
     width: auto
 }
 
-nav li:hover,
-.footer-container li:hover {
+li a:hover,
+.footer-container li a:hover {
     background-color: var(--white);
 }
 
 li:hover a,
 li:hover i {
     color: var(--darkgrey);
+    background-color: var(--white);
 }
 
 
@@ -237,9 +326,10 @@ li.dropdown:hover .dropdown-menu {
     flex-direction: column;
 }
 
-.dropdown-menu input[type="email"],
-.dropdown-menu input[type="password"],
-.dropdown-menu button[type="submit"],
+input[type="email"],
+input[type="password"],
+button[type="submit"],
+input[type="text"],
 .create-user-btn {
     padding: 10px;
     margin-bottom: 10px;
@@ -252,8 +342,8 @@ li.dropdown:hover .dropdown-menu {
     width: 100%;
 }
 
-.dropdown-menu input[type="email"],
-.dropdown-menu input[type="password"] {
+input[type="email"],
+input[type="password"] {
     background-color: var(--white);
 }
 
@@ -381,34 +471,30 @@ footer {
 
 
 
-
-
-
 .search-container {
     display: flex;
     flex-direction: row;
     align-items: center;
     position: relative;
-    padding: 0 1em;
-    height: 100%;
+    /* padding: 0 1em; */
+    /* height: 100%; */
     transition: .5s;
 }
 
 #search-form {
     display: flex;
     flex-direction: row;
-    height: 100%;
-    width: 100%;
+    margin-bottom: -10px;
+    /* height: 100%;
+    width: 100%; */
 }
 
 #search-input {
+    display: none;
     font-size: 1rem;
-    height: 100%;
-    padding: .6em;
-    margin-right: -40px;
+
     border: none;
     color: var(--white);
-    padding: em;
     background-color: transparent;
     width: 0;
     transition: width 0.5s ease-in-out, opacity 0.5s ease-in-out;
@@ -417,20 +503,21 @@ footer {
 #search-input:not(:empty),
 #search-input:focus,
 .search-container:hover #search-input {
+    display: block;
     width: 100%;
-    margin-right: -15px;
 }
 
-#search-btn {
+#search-btn,
+nav a {
     border: none;
     color: var(--white);
     font-size: 16px;
-    height: 105%;
-    width: 3em;
+
     cursor: pointer;
     background-color: var(--darkgrey);
-    padding: .6em;
-    margin-left: -15px;
+    padding: 1em;
+    border-radius: 0;
+
 }
 
 #search-btn:hover,
@@ -449,8 +536,7 @@ footer {
     max-width: 1200px;
     margin: 0 auto;
     transition: .5s;
-    /* overflow-y: scroll; */
-    /* height: 60vh; */
+
 }
 
 @media screen and (max-width: 600px) {
@@ -460,7 +546,10 @@ footer {
         justify-content: space-between;
         position: fixed;
         padding: 0;
-        width: 90vw;
+        width: 100vw;
+        margin: 0;
+        left: 0;
+        overflow: hidden;
     }
 
     #nav-list li {
@@ -476,19 +565,17 @@ footer {
         padding: 0;
         margin: 0;
         height: 100%;
-        width: 15vw;
     }
 
     #search-btn {}
 
     #search-input {
         position: absolute;
-        top: 38px;
-        height: 100%;
+        top: 0;
         opacity: 0;
         border: none;
         background-color: var(--darkgrey);
-        width: 80vw;
+        left: 3.4em;
         height: 0;
         transition: .5s;
         z-index: 3;
@@ -497,12 +584,29 @@ footer {
     #search-input:not(:empty),
     #search-input:focus,
     .search-container:hover #search-input {
-        width: 80vw;
-        height: 100%;
+        width: 75vw;
+        height: 2.8em;
         padding: .2em;
         padding-left: 1em;
         opacity: 1;
+
+
     }
+
+    #company-logo {
+        display: none;
+    }
+
+    #company-name {
+        right: 0;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .nav-text {
+        display: none;
+    }
+
 }
 
 

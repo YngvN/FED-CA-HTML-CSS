@@ -27,53 +27,75 @@
     <header class="header">
         <img id="company-logo" src="assets/img_logo_notext_whitebg.png" alt="Gamehub logo">
         <img id="company-name" src="assets/img_logo_text_lg.png" alt="Gamehub name">
-        <nav>
-            <ul id="nav-list">
-                <div class="search-container">
-                    <form id="search-form">
-                        <button type="submit" id="search-btn"><i class="fa-solid fa-search"></i></button>
-                        <input type="text" id="search-input" placeholder="Search for games">
-                    </form>
-                </div>
-                <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
-                <li class="dropdown">
-                    <a href="profile.html" class=" dropdown-toggle">
-                        <i class="fas fa-user"></i>Profile</a>
-                    <div id="nav-dropdown" class="dropdown-menu">
-                        <form>
-                            <input type="email" name="email" placeholder="Email">
-                            <input type="password" name="password" placeholder="Password">
-                            <button type="submit">Log in</button>
+            <nav>
+                <ul id="nav-list">
+                    <div class="search-container">
+                        <form id="search-form">
+                            <button type="submit" id="search-btn"><i class="fa-solid fa-search"></i></button>
+                            <input type="text" id="search-input" placeholder="Search for games">
                         </form>
-                        <button class="create-user-btn" type="button" onclick="window.location.href='profile.html'">Create
-                            user</button>
                     </div>
-                </li>
-                <li class="dropdown">
-                    <a href="cart.html" class="dropdown-toggle"><i class="fa-solid fa-cart-shopping fa-lg"></i>Cart</a>
-                    </a>
-                    <div id="nav-cart-dropdown" class="dropdown-menu">
-                        <div id="nav-cart">
-                            <p>Cart is empty</p>
+                    <li><a href="index.html"><i class="fas fa-home"></i><span class="nav-text"> Home</span></a></li>
+                    <li class="dropdown">
+                        <a href="profile.html" class="dropdown-toggle">
+                            <i class="fas fa-user"></i><span class="nav-text"> Profile</span></a>
+                        <div id="nav-dropdown" class="dropdown-menu">
+                            <form>
+                                <input type="email" name="email" placeholder="Email">
+                                <input type="password" name="password" placeholder="Password">
+                                <button type="submit">Log in</button>
+                            </form>
+                            <button class="create-user-btn" type="button" onclick="window.location.href='profile.html'">Create
+                                user</button>
                         </div>
-                    </div>
-                </li>
-            </ul>
-        </nav>
+                    </li>
+                    <li class="dropdown">
+                        <a href="cart.html" class="dropdown-toggle"><i class="fa-solid fa-cart-shopping fa-lg"></i><span
+                                class="nav-text"> Cart</span></a>
+                        <div id="nav-cart-dropdown" class="dropdown-menu">
+                            <div id="nav-cart">
+                                <p>Cart is empty</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
     </header>
     <main class="main-contact">
-        <article>
-            <h2>
+        <article class="article-container container">
+            <h2>Contact</h2>
                 <p>You can reach us at</p>
                 <p class="link">please_dont@contact.us</p>
                 <p>Or follow us on</p>
-            </h2>
                 <div class="social-media-contact">
                     <a href="contact.html"><i class="fa-brands fa-square-facebook fa-xl"></i></a>
                     <a href="contact.html"><i class="fa-brands fa-square-twitter fa-xl"></i></a>
                 </div>
+                
         </article>
+            <form id="contact-form" class="container form-container" action="send-email.php" method="post">
+                <h2>Send us a message</h2>
+                <div id="user-contact-info">
+                    <div class="form-child">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-child">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+
+                </div>
+                <div class="form-child">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Enter the subject" required>
+                </div>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Enter your message" required></textarea>
+                <button type="submit">Send message</button>
+            </form>
     </main>
+
     <footer>
         <div class="row">
             <div class="footer-container links">

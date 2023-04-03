@@ -35,10 +35,10 @@
                             <input type="text" id="search-input" placeholder="Search for games">
                         </form>
                     </div>
-                    <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
-                    <li class=" dropdown">
-                        <a href="profile.html" class=" dropdown-toggle">
-                            <i class="fas fa-user"></i>Profile</a>
+                    <li><a href="index.html"><i class="fas fa-home"></i><span class="nav-text"> Home</span></a></li>
+                    <li class="dropdown">
+                        <a href="profile.html" class="dropdown-toggle">
+                            <i class="fas fa-user"></i><span class="nav-text"> Profile</span></a>
                         <div id="nav-dropdown" class="dropdown-menu">
                             <form>
                                 <input type="email" name="email" placeholder="Email">
@@ -50,8 +50,8 @@
                         </div>
                     </li>
                     <li class="dropdown">
-                        <a href="cart.html" class="dropdown-toggle"><i class="fa-solid fa-cart-shopping fa-lg"></i>Cart</a>
-                        </a>
+                        <a href="cart.html" class="dropdown-toggle"><i class="fa-solid fa-cart-shopping fa-lg"></i><span
+                                class="nav-text"> Cart</span></a>
                         <div id="nav-cart-dropdown" class="dropdown-menu">
                             <div id="nav-cart">
                                 <p>Cart is empty</p>
@@ -60,23 +60,39 @@
                     </li>
                 </ul>
             </nav>
+
         </header>
-    <main class="main-about">
-        <article>
-            <h2>
-                <p>GameHub is an online shop where users can purchase computer games. This gaming marketplace lets you buy
-                    tons of video games online for any device.</p>
-    
+        <main class="main-about">
+            <article class="article-container container">
+                <h2>About</h2>
+                <p>GameHub is an online shop where users can purchase computer games. This gaming marketplace lets you buy tons
+                    of video games online for any device.</p>
                 <p>GameHub is a competitively priced website with a huge range of games.</p>
-    
-                <p>We as a company believe in re-use and re-introduce old games to new players, so we made this platform to
-                    make it easier for gamers to find both new games, but also old ones for a cheaper price.
-                    Or at least a price that makes us money.</p>
-    
-            </h2>
-    
-        </article>
-    </main>
+                <p>We as a company believe in re-use and re-introduce old games to new players, so we made this platform to make
+                    it easier for gamers to find both new games, but also old ones for a cheaper price. Or at least a price that
+                    makes us money.</p>
+            </article>
+            <div id="info-container" class="container">
+                <div class="info-tile child">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h3>Cheap</h3>
+                    <p>Buying used games can save you money and allow you to buy more games within your budget.</p>
+                </div>
+                <div class="info-tile child">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Good for the environment</h3>
+                    <p>By purchasing used games, you are reducing the demand for new games to be produced, which helps to reduce
+                        waste and conserve natural resources.</p>
+                </div>
+                <div class="info-tile child">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Remembering old games</h3>
+                    <p>Buying used games allows you to revisit older games that may no longer be available for purchase, allowing
+                        you to relive old memories and discover forgotten gems.</p>
+                </div>
+            </div>
+        </main>
+
     <footer>
         <div class="row">
             <div class="footer-container links">
