@@ -34,11 +34,11 @@ function renderGameList(games, list, discountPercentage = 0) {
     if (discountPercentage > 0) {
       const discountedPrice = (game.price * (100 - discountPercentage)) / 100;
       priceHTML = `
+      <span class="game-price-discount">${discountPercentage}% off</span>
         <div class="game-numbers">
           <span class="game-price-regular">$ ${game.price}</span>
           <span class="game-price-discounted">$ ${discountedPrice.toFixed(2)}</span>
         </div>
-        <span class="game-price-discount">${discountPercentage}% off</span>
       `;
     } else {
       priceHTML = `

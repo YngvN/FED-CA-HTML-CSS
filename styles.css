@@ -27,7 +27,7 @@ footer {
 .body-background {
     position: fixed;
     top: 0;
-    left: 0;
+    left: 20em;
     width: 90%;
     height: 100%;
     z-index: -1;
@@ -179,26 +179,29 @@ nav a,
 
 
 
-
-
-
-
-
 #company-logo {
-    position: absolute;
-    height: 10em;
+    position: fixed;
+    height: 50em;
+    z-index: -3;
     padding: .5em;
-    top: 0;
+    bottom: -25em;
+    opacity: .1;
+    left: -23em;
     width: auto;
 }
 
+
 #company-name {
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
     position: relative;
-    width: auto;
-    height: 4em;
-    top: 2em;
+    width: 40vw;
+    max-width: 29em;
+    padding: .5em;
+    height: auto;
+    top: 0;
+    left: 0;
+
 }
 
 
@@ -593,14 +596,15 @@ nav a {
 
     }
 
-    #company-logo {
-        display: none;
-    }
+
 
     #company-name {
-        right: 0;
-        margin-right: auto;
         margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        width: auto;
+        height: 4em;
+        top: 2em;
     }
 
     .nav-text {
