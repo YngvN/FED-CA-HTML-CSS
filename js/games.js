@@ -43,7 +43,7 @@ searchForm.addEventListener("submit", async (event) => {
         </div>
         <div class="game-price">
           <span>$ ${searchResult.price}</span>
-          <button class="game-buy" data-id="${searchResult.id}">Add to Cart</button>
+          <button class="game-buy" data-id="${searchResult.id}"><i class="fa-solid fa-cart-shopping fa-lg"></i></button>
         </div>
       </div>
     `;

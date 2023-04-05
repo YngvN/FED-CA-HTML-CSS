@@ -637,7 +637,7 @@ nav a {
 
 
 .game-container:hover .game-cover {
-    height: 70%;
+    height: 90%;
 }
 
 
@@ -647,6 +647,7 @@ nav a {
     color: var(--black);
     bottom: 100px;
 }
+
 
 #view-more {
     position: absolute;
@@ -678,9 +679,6 @@ nav a {
     transition: .5s;
 }
 
-.game-cover:hover .game-cover {
-    height: 100%;
-}
 
 .game-description {
     visibility: hidden;
@@ -863,7 +861,218 @@ nav a {
     box-shadow: 5px 5px rgba(0, 0, 0, 0.294);
 }
 
-#sale-games {}
+
+
+/* ----------------------------------------------------- */
+
+
+@media screen and (max-width: 600px) {}
+
+
+.display-small {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.list-small {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.list-small .game-container,
+.list-small .game-container-placeholder {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    scroll-snap-align: 0;
+    position: relative;
+    width: 35vw;
+    min-width: 25em;
+    max-width: 35em;
+    height: 10em;
+    margin: 20px;
+}
+
+.list-small .game-container {
+    position: absolute;
+}
+
+.list-small .game-cover {
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+    bottom: 0;
+
+    object-fit: cover;
+    cursor: pointer;
+    transition: .5s;
+}
+
+
+.list-small .game-container:hover .game-details {
+    height: 40%;
+    top: 60%;
+}
+
+
+
+.list-small .game-container:hover .game-cover {
+    height: 100%;
+}
+
+
+.list-small .game-title {
+    font-size: .9rem;
+}
+
+.list-small #view-more {
+    /* position: absolute;
+    top: 1.2em; */
+
+}
+
+.list-small .game-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    width: 40%;
+    height: 25%;
+    top: 7.5em;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+
+}
+
+/* .list-small .game-details p {
+    color: black;
+} */
+
+
+
+/* .list-small .game-cover:hover {
+    height: 100%;
+} */
+
+.list-small .game-description {
+    /* visibility: hidden;
+    position: absolute;
+    bottom: 40%;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    transition: all 0.3s ease-in-out; */
+}
+
+
+
+.list-small .game-price {
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: space-around;
+    position: relative;
+    bottom: 0;
+    width: 60%;
+    height: 100%;
+
+    transition: all 0.3s ease-in-out;
+}
+
+.list-small .game-buy {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    font-family: Rift, Impact, 'Arial Narrow Bold', sans-serif;
+    font-size: large;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 3px;
+    width: auto
+}
+
+.list-small .game-buy:hover {
+    background-color: blue;
+}
+
+
+.game-price button {
+    margin: 1em;
+}
+
+/* #featured-games {
+    width: 80vw;
+    max-width: 1000px;
+} */
+
+
+.list-small .game-price {
+    display: flex;
+    justify-content: center;
+    font-size: 1.7rem;
+    color: var(--white);
+    left: 0;
+}
+
+.list-small .game-numbers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    top: 25px;
+    min-width: none;
+    max-width: 130px;
+    width: 50%;
+    margin-left: -20px;
+}
+
+.list-small .game-price-regular {
+    font-size: 1.2rem;
+    color: var(--white);
+    text-decoration: line-through;
+    left: 0;
+}
+
+.game-price-discounted {
+    font-size: 1.7rem;
+    color: red;
+    left: 0;
+}
+
+.game-price-discount {
+    color: var(--white);
+    background-color: red;
+    position: absolute;
+    font-size: 1rem;
+    margin: .5em;
+    padding: 2px 5px;
+    top: 0;
+    left: -70%;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.294);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -------------------------------------------------------- */
+
 
 .profile-container {
     background-color: black;

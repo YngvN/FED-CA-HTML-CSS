@@ -22,9 +22,9 @@ const shuffledGames = games.sort(() => 0.5 - Math.random());
 
 const featured = shuffledGames.slice(0, 5);
 
-const sale = shuffledGames.slice(5, 15);
+const sale = shuffledGames.slice(5, 10);
 
-const popular = shuffledGames.slice(15, 25);
+const popular = shuffledGames.slice(10, 15);
 
 function renderGameList(games, list, discountPercentage = 0) {
   for (let i = 0; i < games.length; i++) {
@@ -47,7 +47,8 @@ function renderGameList(games, list, discountPercentage = 0) {
     }
 
     const gameItem = document.createElement("div");
-    gameItem.innerHTML = `
+    gameItem.innerHTML = 
+    `<div class="game-container-placeholder">
       <div id="game-container-index" class="game-container">
         <img class="game-cover" src="${game.background_image}" alt="${game.name}" />
         <div class="game-details">
@@ -57,8 +58,9 @@ function renderGameList(games, list, discountPercentage = 0) {
         </div>
         <div class="game-price">
           ${priceHTML}
-          <button class="game-buy" data-id="${game.id}">Add to Cart</button>
+          <button class="game-buy" data-id="${game.id}"><i class="fa-solid fa-cart-shopping fa-lg"></i></button>
         </div>
+      </div>
       </div>
     `;
 
@@ -71,7 +73,6 @@ function renderGameList(games, list, discountPercentage = 0) {
   }
 }
 
-// Call the function for each list
 renderGameList(featured, gameList);
 renderGameList(sale, saleList, Math.floor(Math.random() * 26) + 5);
 renderGameList(popular, popularList);
