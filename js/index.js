@@ -21,7 +21,10 @@ const pageNumber = 1;
 
 const url = buildSearchUrl("", pageSize, pageNumber);
 
+
+
 export const games = await fetchData(url);
+
 
 const shuffledGames = games.sort(() => 0.5 - Math.random());
 
@@ -88,7 +91,8 @@ renderGameList(popular, popularList);
 async function handleGameCoverClick(event) {
   console.log("Cover clicked");
   const gameId = event.target.getAttribute('data-id');
-  const game = await fetchGameById(gameId);
+  const gameURL = buildGameUrl(gameId);
+  const game = await fetchGameById(gameURL);
 
   console.log("Details clicked for " + game.name);
   fillGameDetails(game);

@@ -46,7 +46,7 @@ export async function fetchGameById(url) {
   try {
     const response = await fetch(url);
     const data = await response.json();
-    console.log("Game data fetched:", data);
+    console.log("Game data fetched");
     return data;
   } catch (error) {
     console.error("Error fetching game data:", error);
