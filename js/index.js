@@ -44,13 +44,13 @@ function renderGameList(games, list, discountPercentage = 0) {
       priceHTML = `
       <span class="game-price-discount">${discountPercentage}% off</span>
         <div class="game-numbers">
-          <span class="game-price-regular">$ ${game.price}</span>
-          <span class="game-price-discounted">$ ${discountedPrice.toFixed(2)}</span>
+          <p class="game-price-regular">$ ${game.price}</p>
+          <p class="game-price-discounted">$ ${discountedPrice.toFixed(2)}</p>
         </div>
       `;
     } else {
       priceHTML = `
-        <span>$ ${game.price}</span>
+        <p>$ ${game.price}</p>
       `;
     }
 
@@ -90,6 +90,10 @@ renderGameList(popular, popularList);
 
 async function handleGameCoverClick(event) {
   console.log("Cover clicked");
+
+  const gameDetailsDisplay = document.getElementById("game-details-display");
+  gameDetailsDisplay.style.display = "block"
+
   const gameId = event.target.getAttribute('data-id');
   const gameURL = buildGameUrl(gameId);
   const game = await fetchGameById(gameURL);
@@ -219,30 +223,27 @@ const fillGameDetails = (game) => {
 
   const html = `
     <div class="game-container">
-      <div class="game-cover" style="background-image: url(${game.background_image})">
-        <button class="buy-btn">Buy $${game.price}</button>
-      </div>
+      <img class="game-cover" src="${game.background_image}" alt="${game.name}" data-id="${game.id}"></img>
+      <button class="game-buy">Buy $${game.price}</button>
+      <button id="close-btn" class="close-button"><i class="fa fa-times"></i></button>
       <div class="game-info">
-        <h3>${game.name}</h3>
-        <p class="game-description">${game.description ? game.description : 'Description not available'}</p>
+        <h3 class="game-title">${game.name}</h3>
         <div class="more-details">
-          <div>
+          <p class="game-description">${game.description ? game.description : 'Description not available'}</p>
+
+          <div class="game-details-section">
             <h4>Genre:</h4> 
-            <ul id="genre">
-              ${game.genres.map(genre => `<li>${genre.name}</li>`).join('')}
-            </ul>
+            <p id="genre">${game.genres.map(genre => genre.name).join(', ')}</p>
           </div>
-          <div>
+          <div class="game-details-section">
             <h4>Platform:</h4> 
-            <ul id="platform">
-              ${game.platforms.map(platform => `<li>${platform.platform.name}</li>`).join('')}
-            </ul>
+            <p id="platform">${game.platforms.map(platform => platform.platform.name).join(', ')}</p>
           </div>
-          <div>
+          <div class="game-details-section">
             <h4>Developer:</h4> 
             <p id="developer">${game.developers.map(developer => developer.name).join(', ')}</p>
           </div>
-          <div>
+          <div class="game-details-section">
             <h4>Release Date:</h4> 
             <p id="release-date">${new Date(game.released).toLocaleDateString()}</p>
           </div>
