@@ -5,4 +5,9 @@ export const buildSearchUrl = (searchTerm, pageSize, pageNumber) => {
   return `${baseUrl}?key=${apiKey}&search=${searchTerm}&page_size=${pageSize}&page=${pageNumber}`;
 };
 
+export const buildGameUrl = (gameId) => {
+  return `${baseUrl}/${gameId}?key=${apiKey}`;
+};
+
+
 console.log("api.js loaded")

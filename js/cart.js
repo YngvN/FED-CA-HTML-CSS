@@ -1,14 +1,14 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-export const addToCart = (gameId, gameTitle, gamePrice, gameCover, gameDescription) => {
-  const game = { id: gameId, name: gameTitle, price: gamePrice, cover: gameCover, description: gameDescription };
+export const addToCart = (gameId, gameTitle, gamePrice, gameCover) => {
+  const game = { id: gameId, name: gameTitle, price: gamePrice, cover: gameCover};
 
   cart.push(game);
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartDisplay();
   showCartNotification();
 
-  console.log(`Game ${gameTitle} added to cart.`);
+  console.log(`Game ${gameTitle} added to cart for ${gamePrice} .`);
 };
 
 
@@ -71,7 +71,7 @@ export const updateCartDisplay = () => {
   navCart.appendChild(fragment);
 };
 
-const showCartNotification = () => {
+export const showCartNotification = () => {
   const cartIcon = document.querySelector(".fa-cart-shopping");
   const notification = document.createElement("div");
   notification.classList.add("cart-notification");

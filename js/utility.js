@@ -42,6 +42,38 @@ export const fetchGameDetails = async (id) => {
   }
 };
 
+export async function fetchGameById(url) {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log("Game data fetched:", data);
+    return data;
+  } catch (error) {
+    console.error("Error fetching game data:", error);
+    return null;
+  }
+}
+
+
+
+// export const fetchGameById = async (gameId) => {
+//   try {
+//     const response = await fetch(`https://api.rawg.io/api/games/${gameId}`);
+//     const game = await response.json();
+//     const price = generateRandomPrice(game.id);
+//     const description = game.description || await fetchGameDetails(game.id);
+//     const genres = game.genres.slice(0, 2);
+//     const platforms = game.platforms.slice(0, 2);
+//     const developer = game.developers.map(developer => developer.name).join(', ');
+//     const releaseDate = new Date(game.released).toLocaleDateString();
+//     return { ...game, price, description, genres, platforms, developer, releaseDate };
+//   } catch (error) {
+//     console.error("Error fetching data:", error);
+//     return null;
+//   }
+// };
+
+
 // const form = document.getElementById("nav-login");
 
 // form.addEventListener("submit", (event) => {

@@ -1,7 +1,12 @@
 import { fetchData } from "./utility.js";
+import { fetchGameById } from "./utility.js";
+
 import { buildSearchUrl } from "./api.js";
+import { buildGameUrl } from "./api.js";
 import { addToCart } from "./cart.js";
 import { updateCartDisplay } from "./cart.js";
+import { showCartNotification } from "./cart.js";
+
 
 
 updateCartDisplay();
@@ -48,24 +53,27 @@ function renderGameList(games, list, discountPercentage = 0) {
 
     const gameItem = document.createElement("div");
     gameItem.innerHTML = 
-    `<div class="game-container-placeholder">
-      <div id="game-container-index" class="game-container">
-        <img class="game-cover" src="${game.background_image}" alt="${game.name}" />
+    `<div id="game-container-index" class="game-container">
+        <img class="game-cover" src="${game.background_image}" alt="${game.name}" data-id="${game.id}" />
         <div class="game-details">
           <h3 class="game-title">${game.name}</h3>
           <p id="view-more">View more</p>
-          <p class="game-description">${game.description ? game.description : 'Description not available'}</p>
         </div>
         <div class="game-price">
-          ${priceHTML}
-          <button class="game-buy" data-id="${game.id}"><i class="fa-solid fa-cart-shopping fa-lg"></i></button>
-        </div>
+        ${priceHTML}
+        <button class="game-buy" data-id="${game.id}"><i class="fa-solid fa-cart-shopping fa-lg"></i></button>
       </div>
       </div>
     `;
-
     const container = gameItem.querySelector(".game-container");
     const imageUrl = game.background_image;
+    const gameCovers = document.querySelectorAll('.game-cover');
+
+    gameCovers.forEach(gameCover => {
+      console.log(game.id)
+      gameCover.removeEventListener('click', handleGameCoverClick);
+      gameCover.addEventListener('click', handleGameCoverClick);
+    });
 
     list.appendChild(gameItem);
 
@@ -77,6 +85,17 @@ renderGameList(featured, gameList);
 renderGameList(sale, saleList, Math.floor(Math.random() * 26) + 5);
 renderGameList(popular, popularList);
 
+async function handleGameCoverClick(event) {
+  console.log("Cover clicked");
+  const gameId = event.target.getAttribute('data-id');
+  const game = await fetchGameById(gameId);
+
+  console.log("Details clicked for " + game.name);
+  fillGameDetails(game);
+  console.log("Details displayed");
+}
+
+
 const addToCartButtons = document.querySelectorAll(".game-buy");
 
 addToCartButtons.forEach((button) => {
@@ -85,9 +104,8 @@ addToCartButtons.forEach((button) => {
     const gameTitle = event.target.closest(".game-container").querySelector(".game-title").textContent;
     const gamePrice = event.target.closest(".game-container").querySelector(".game-price span").textContent.slice(2);
     const gameCover = event.target.closest(".game-container").querySelector(".game-cover").getAttribute("src");
-    const gameDescription = event.target.closest(".game-container").querySelector(".game-description").textContent;
 
-    addToCart(gameId, gameTitle, gamePrice, gameCover, gameDescription);
+    addToCart(gameId, gameTitle, gamePrice, gameCover);
 
     button.classList.add("game-added");
     button.textContent = "Added";
@@ -106,14 +124,17 @@ const searchButton = document.getElementById("search-btn");
 const displayContainer = document.getElementById("display-container");
 
 
-function renderSearchResults(searchResults) {
+function renderSearchResults(searchResults) 
+{
   searchResultsContainer.innerHTML = "";
 
   renderGameList(searchResults, searchResultsContainer);
 
   const addToCartButtons = searchResultsContainer.querySelectorAll(".game-buy");
-  addToCartButtons.forEach((button) => {
-    button.addEventListener("click", async (event) => {
+  addToCartButtons.forEach((button) => 
+  {
+    button.addEventListener("click", async (event) => 
+    {
       const gameId = event.target.dataset.id;
       const gameTitle = event.target.closest(".game-container").querySelector(".game-title").textContent;
       const gamePrice = event.target.closest(".game-container").querySelector(".game-price span").textContent.slice(2);
@@ -187,6 +208,46 @@ function addBackgroundImage(container, imageUrl) {
 
 
 
+
+
+const fillGameDetails = (game) => {
+  const gameDetailsDisplay = document.getElementById('game-details-display');
+
+  const html = `
+    <div class="game-container">
+      <div class="game-cover" style="background-image: url(${game.background_image})">
+        <button class="buy-btn">Buy $${game.price}</button>
+      </div>
+      <div class="game-info">
+        <h3>${game.name}</h3>
+        <p class="game-description">${game.description ? game.description : 'Description not available'}</p>
+        <div class="more-details">
+          <div>
+            <h4>Genre:</h4> 
+            <ul id="genre">
+              ${game.genres.map(genre => `<li>${genre.name}</li>`).join('')}
+            </ul>
+          </div>
+          <div>
+            <h4>Platform:</h4> 
+            <ul id="platform">
+              ${game.platforms.map(platform => `<li>${platform.platform.name}</li>`).join('')}
+            </ul>
+          </div>
+          <div>
+            <h4>Developer:</h4> 
+            <p id="developer">${game.developers.map(developer => developer.name).join(', ')}</p>
+          </div>
+          <div>
+            <h4>Release Date:</h4> 
+            <p id="release-date">${new Date(game.released).toLocaleDateString()}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  gameDetailsDisplay.innerHTML = html;
+};
+
 console.log("index.js loaded")
-
-

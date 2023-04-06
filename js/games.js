@@ -39,7 +39,6 @@ searchForm.addEventListener("submit", async (event) => {
         <div class="game-details">
           <h3 class="game-title">${searchResult.name}</h3>
           <p id="view-more">View more</p>
-          <p class="game-description">${searchResult.description ? searchResult.description : 'Description not available'}</p>
         </div>
         <div class="game-price">
           <span>$ ${searchResult.price}</span>
@@ -59,9 +58,8 @@ searchForm.addEventListener("submit", async (event) => {
       const gameTitle = event.target.closest(".game-container").querySelector(".game-title").textContent;
       const gamePrice = event.target.closest(".game-container").querySelector(".game-price span").textContent.slice(2);
       const gameCover = event.target.closest(".game-container").querySelector(".game-cover").getAttribute("src");
-      const gameDescription = event.target.closest(".game-container").querySelector(".game-description").textContent;
       console.log("Adding " + gameTitle + " to cart");
-      addToCart(gameId, gameTitle, gamePrice, gameCover, gameDescription);
+      addToCart(gameId, gameTitle, gamePrice, gameCover);
       updateCartDisplay();
     });
   });
