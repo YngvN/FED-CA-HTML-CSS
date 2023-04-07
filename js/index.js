@@ -16,6 +16,7 @@ const gameList = document.getElementById("featured-list");
 const saleList = document.getElementById("sale-list");
 const popularList = document.getElementById("popular-list");
 const featuredGameContainer = document.getElementById("featured-games");
+const displayContainer = document.getElementById("display-container");
 const pageSize = 20;
 const pageNumber = 1;
 
@@ -88,11 +89,19 @@ renderGameList(featured, gameList);
 renderGameList(sale, saleList, Math.floor(Math.random() * 26) + 5);
 renderGameList(popular, popularList);
 
+const gameCovers = document.querySelectorAll('.game-cover');
+
+
+
+
 async function handleGameCoverClick(event) {
   console.log("Cover clicked");
 
   const gameDetailsDisplay = document.getElementById("game-details-display");
-  gameDetailsDisplay.style.display = "block"
+  
+  gameDetailsDisplay.style.display = "block";
+  displayContainer.style.display = "none";
+
 
   const gameId = event.target.getAttribute('data-id');
   const gameURL = buildGameUrl(gameId);
@@ -129,7 +138,6 @@ const searchForm = document.getElementById("search-form");
 const searchInput = document.getElementById("search-input");
 const searchResultsContainer = document.getElementById("search-results-container");
 const searchButton = document.getElementById("search-btn");
-const displayContainer = document.getElementById("display-container");
 
 
 function renderSearchResults(searchResults) 
@@ -147,9 +155,8 @@ function renderSearchResults(searchResults)
       const gameTitle = event.target.closest(".game-container").querySelector(".game-title").textContent;
       const gamePrice = event.target.closest(".game-container").querySelector(".game-price span").textContent.slice(2);
       const gameCover = event.target.closest(".game-container").querySelector(".game-cover").getAttribute("src");
-      const gameDescription = event.target.closest(".game-container").querySelector(".game-description").textContent;
 
-      addToCart(gameId, gameTitle, gamePrice, gameCover, gameDescription);
+      addToCart(gameId, gameTitle, gamePrice, gameCover);
 
       button.classList.add("game-added");
       button.textContent = "Added";
@@ -219,13 +226,12 @@ function addBackgroundImage(container, imageUrl) {
 
 
 const fillGameDetails = (game) => {
-  const gameDetailsDisplay = document.getElementById('game-details-display');
+  const gameDetailsDisplay = document.getElementById('game-details-container');
 
   const html = `
     <div class="game-container">
       <img class="game-cover" src="${game.background_image}" alt="${game.name}" data-id="${game.id}"></img>
       <button class="game-buy">Buy $${game.price}</button>
-      <button id="close-btn" class="close-button"><i class="fa fa-times"></i></button>
       <div class="game-info">
         <h3 class="game-title">${game.name}</h3>
         <div class="more-details">

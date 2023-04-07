@@ -60,8 +60,12 @@ closeButton.innerHTML = '<i class="fa fa-times"></i>';
 closeButton.classList.add("close-button");
 
 closeButton.addEventListener("click", () => {
+  const displayContainer = document.getElementById("display-container");
+
   console.log("Close-button")
   gameDetailsDisplay.style.display = "none";
+  displayContainer.style.display = "flex";
+
 });
 
 gameDetailsDisplay.appendChild(closeButton);

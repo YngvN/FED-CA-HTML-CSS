@@ -28,8 +28,8 @@
     <header class="header">
         <img id="company-name" src="assets/img_logo_text_lg.png" alt="Gamehub name">
         <nav>
-            <ul id="nav-list">
-                <div class="search-container">
+            <ul id="nav-list" class="row">
+                <div class="search-container row">
                     <form id="search-form">
                         <button type="submit" id="search-btn"><i class="fa-solid fa-search"></i></button>
                         <input type="text" id="search-input" placeholder="Search for games">
@@ -39,8 +39,8 @@
                 <li class="dropdown">
                     <a href="profile.html" class="dropdown-toggle">
                         <i class="fas fa-user"></i><span class="nav-text"> Profile</span></a>
-                    <div id="nav-dropdown" class="dropdown-menu">
-                        <form>
+                    <div id="nav-dropdown" class="dropdown-menu ">
+                        <form class="column">
                             <input type="email" name="email" placeholder="Email">
                             <input type="password" name="password" placeholder="Password">
                             <button type="submit">Log in</button>
@@ -53,7 +53,7 @@
                     <a href="cart.html" class="dropdown-toggle"><i class="fa-solid fa-cart-shopping fa-lg"></i><span
                             class="nav-text"> Cart</span></a>
                     <div id="nav-cart-dropdown" class="dropdown-menu">
-                        <div id="nav-cart">
+                        <div id="nav-cart" class="column">
                             <p>Cart is empty</p>
                         </div>
                     </div>
@@ -92,31 +92,31 @@
             </div>
         </main>
 
-    <footer>
-        <div class="row">
-            <div class="footer-container links">
-                <ul>
-                    <li class="active"><a href="#">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
+        <footer>
+            <div class="row">
+                <div class="footer-container">
+                    <ul class="row">
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-container">
+                    <ul class="row">
+                        <li><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-square-twitter"></i></a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-container social-media">
-                <ul>
-                    <li><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-square-twitter"></i></a></li>
-                </ul>
+            <p class="legal-text">© 2022, GameHub, Inc. All rights reserved. GameHub, the GameHub logo and your mom are
+                trademarks or registered trademarks of GameHub, Inc. in my moms garage. Other brands or product names are the
+                trademarks of their respective owners. Non-garage transactions go through my mom since I'm not allowed to
+                anymore. </p>
+            <div class="footer-container legal row">
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Store Refund Policy</a>
             </div>
-        </div>
-        <p class="legal-text">© 2022, GameHub, Inc. All rights reserved. GameHub, the GameHub logo and your mom are
-            trademarks or registered trademarks of GameHub, Inc. in my moms garage. Other brands or product names are
-            the trademarks of their respective owners. Non-garage transactions go through my mom since I'm not allowed
-            to anymore. </p>
-        <div class="footer-container legal">
-            <a href="#">Terms of Service</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Store Refund Policy</a>
-        </div>
-    </footer>
+        </footer>
     <script defer src="/js/index.js" type="module"></script>
     <script defer src="/js/cart.js " type="module"></script>
     <script defer src="/js/api.js" type="module"></script>

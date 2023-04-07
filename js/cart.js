@@ -28,7 +28,7 @@ export const updateCartDisplay = () => {
   cartIcon.dataset.count = cart.length;
 
   if (cart.length === 0) {
-    navCart.innerHTML = "<p id='empty-cart'>Cart is empty</p>";
+    navCart.innerHTML = "<h4 id='empty-cart'>Cart is empty</h4>";
     return;
   }
 
@@ -40,7 +40,7 @@ export const updateCartDisplay = () => {
     const price = localStorage.getItem(`price_${game.id}`);
     totalPrice += Number(price);
     cartItem.innerHTML = `
-      <span class="cart-text">${game.name} - $${price}</span>
+      <h4 class="cart-text">${game.name} - $${price}</h4>
       <button class="remove-game" data-id="${game.id}">
           <i class="fa-regular fa-trash-can"></i>
       </button>
@@ -71,22 +71,20 @@ export const updateCartDisplay = () => {
   navCart.appendChild(fragment);
 };
 
-export const showCartNotification = () => {
-  const cartIcon = document.querySelector(".fa-cart-shopping");
-  const notification = document.createElement("div");
-  notification.classList.add("cart-notification");
-  notification.textContent = "Item added to cart";
-  cartIcon.parentElement.appendChild(notification);
 
-  // Position the notification element underneath the cart icon
-  const iconRect = cartIcon.getBoundingClientRect();
-  notification.style.position = "absolute";
-  notification.style.top = `${iconRect.bottom}px`;
-  notification.style.right = `${window.innerWidth - iconRect.right}px`;
+
+export const showCartNotification = () => {
+  const cartIcon = document.querySelector(".cart-notification");
+  cartIcon.style.backgroundColor = "green";
+  cartIcon.style.transition = ".1s";
 
   setTimeout(() => {
-    notification.remove();
+    cartIcon.style.transition = "2s";
+    cartIcon.style.backgroundColor = "var(--darkgrey";
   }, 2000);
 };
+
+
+
 
 console.log("cart.js loaded")

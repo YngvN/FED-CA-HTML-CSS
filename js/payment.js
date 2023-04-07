@@ -15,6 +15,7 @@ const createPaymentSection = (totalPrice) => {
     const paymentContainer = document.getElementById("payment-container");
     const body = document.getElementById("body-cart");
     paymentContainer.classList.add("show");
+    cartDisplay.style.display = "none";
   });
 
   const paymentSection = document.createElement("div");
@@ -45,11 +46,10 @@ const displayCartContents = () => {
         <img class="game-cover" src="${game.cover}" alt="${game.name}" />
         <div class="game-details">
           <h3 class="game-title">${game.name}</h3>
-          <p class="game-description">${game.description ? game.description : 'Description not available'}</p>
         </div>
         <div class="game-price">
-          <span>$ ${game.price}</span>
-          <button class="game-buy" data-id="${game.id}">Remove from cart</button>
+          <p>$ ${game.price}</p>
+          <button class="game-buy" data-id="${game.id}"><i class="fa-regular fa-trash-can"></i></button>
         </div>
       </div>
     `;
