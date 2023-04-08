@@ -8,9 +8,7 @@
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: auto;
     margin: 0;
     padding: 0;
     background: linear-gradient(to bottom right, var(--darkblue), var(--darkgrey));
@@ -20,12 +18,17 @@ body {
 header,
 main,
 footer {
+    display: block;
+    overflow-x: hidden;
     max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 main {
     margin-bottom: .5em;
     min-height: 60vh;
+    padding: 1em;
 }
 
 
@@ -34,6 +37,7 @@ header {
     flex-direction: row;
     align-items: center;
     min-height: 10em;
+    overflow-x: hidden;
 }
 
 footer {
@@ -42,7 +46,6 @@ footer {
     justify-content: center;
     align-items: center;
     background-color: var(--darkgrey);
-    padding: 1em;
 
 }
 
@@ -72,6 +75,8 @@ ul {
     padding: 2em;
     height: auto;
     top: 2em;
+    margin-left: auto;
+    margin-right: auto;
 
 
 }
@@ -80,13 +85,14 @@ ul {
     position: fixed;
     top: 0;
     left: 0;
-    width: 150%;
-    height: 200%;
+    width: 100%;
+    height: 100%;
     z-index: -1;
     background-attachment: fixed;
     background-size: cover;
     filter: opacity(.1);
     opacity: .1;
+    overflow: hidden;
     transition: opacity 0.1s ease-in-out;
     mask-image: linear-gradient(to top right, transparent 50%, black 50%);
     -webkit-mask-image: linear-gradient(to top right, transparent 50%, black 50%);
@@ -214,9 +220,9 @@ button:hover {
     align-self: center;
 }
 
-.game-buy-btn:hover i {
+/* .game-buy-btn:hover i {
     font-size: 5rem;
-}
+} */
 
 .game-buy-btn:hover {
     background-color: var(--grey);
@@ -308,7 +314,7 @@ input {
     width: 100vw;
     height: 3em;
     top: 0;
-    right: 0;
+    left: 0;
     margin: 0;
     z-index: 10;
 
@@ -332,7 +338,6 @@ footer a {
     display: block;
     padding: 1em;
     height: 100%;
-    width: auto;
     transition: .2s;
 
 }
@@ -492,6 +497,13 @@ li.dropdown:hover .dropdown-menu {
     padding: 1em;
 }
 
+.footer-container {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 
 
 .legal {
@@ -600,11 +612,8 @@ li.dropdown:hover .dropdown-menu {
 .game-numbers {
     display: flex;
     flex-direction: row;
+    position: absolute;
     justify-content: space-between;
-    top: 25px;
-    max-width: 130px;
-    width: 50%;
-    margin-left: -20px;
 }
 
 #featured-list .game-price,
@@ -613,15 +622,24 @@ li.dropdown:hover .dropdown-menu {
 }
 
 .game-price-regular {
+    position: absolute;
+    left: -20em;
+    top: 2em;
     font-size: 1rem;
-    color: var(--white);
+    padding: .2em;
+    color: black;
+    background-color: var(--white);
     text-decoration: line-through;
 
 }
 
 .game-price-discounted {
-    font-size: 1.2rem;
+    position: absolute;
+    left: -3em;
+    width: max-content;
+    font-size: 1.5rem;
     color: red;
+    font-family: Rift, Impact, 'Arial Narrow Bold', sans-serif;
 
 }
 
@@ -632,7 +650,7 @@ li.dropdown:hover .dropdown-menu {
     font-size: .8rem;
     padding: 2px 5px;
     top: 0;
-    left: -18em;
+    left: -25em;
     box-shadow: 5px 5px rgba(0, 0, 0, 0.294);
 }
 
@@ -832,24 +850,17 @@ li.dropdown:hover .dropdown-menu {
 }
 
 .list-small .game-buy-btn {
+    color: transparent;
     font-size: 1.5rem;
-    width: 3em;
-    height: 3em;
+    width: 4em;
+    height: 4em;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+.list-small .game-buy-btn i {
+    position: absolute;
+    left: 3.75em;
+    bottom: 1em;
+}
 
 
 
@@ -1097,7 +1108,7 @@ li.dropdown:hover .dropdown-menu {
         right: 0;
     }
 
-    #nav-profile-dropdown {
+    #nav-dropdown {
         right: -100%;
     }
 
@@ -1134,5 +1145,11 @@ li.dropdown:hover .dropdown-menu {
         width: 100%;
         height: 80%;
         padding: 1em;
+    }
+
+    .list-big,
+    .list-big .game-container {
+        max-width: 800px;
+        width: 80vw;
     }
 }
