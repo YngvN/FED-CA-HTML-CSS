@@ -43,7 +43,7 @@ function renderGameList(games, list, discountPercentage = 0) {
     if (discountPercentage > 0) {
       const discountedPrice = (game.price * (100 - discountPercentage)) / 100;
       priceHTML = `
-      <span class="game-price-discount">${discountPercentage}% off</span>
+        <p class="game-price-discount">${discountPercentage}% off</p>
         <div class="game-numbers">
           <p class="game-price-regular">$ ${game.price}</p>
           <p class="game-price-discounted">$ ${discountedPrice.toFixed(2)}</p>
@@ -56,19 +56,26 @@ function renderGameList(games, list, discountPercentage = 0) {
     }
 
     const gameItem = document.createElement("div");
-    gameItem.innerHTML = 
-    `<div id="game-container-index" class="game-container">
+    gameItem.innerHTML = `
+      <div class="game-container">
         <img class="game-cover" src="${game.background_image}" alt="${game.name}" data-id="${game.id}" />
         <div class="game-details">
           <h3 class="game-title">${game.name}</h3>
-          <p id="view-more">View more</p>
+   
+          <button class="view-more-btn" data-id="${game.id}">View more</button>
         </div>
+
         <div class="game-price">
-        ${priceHTML}
-        <button class="game-buy" data-id="${game.id}"><i class="fa-solid fa-cart-shopping fa-lg"></i></button>
-      </div>
+          ${priceHTML}
+        </div>
+          <button class="game-buy-btn" data-id="${game.id}"><i class="fa-solid fa-cart-shopping fa-lg"></i>$${game.price}</button>
+
+        <div class="game-genre">
+          <p>${game.genres.map(genre => genre.name).join(', ')}</p>
+        </div>
       </div>
     `;
+
     const container = gameItem.querySelector(".game-container");
     const imageUrl = game.background_image;
     const gameCovers = document.querySelectorAll('.game-cover');
@@ -85,6 +92,7 @@ function renderGameList(games, list, discountPercentage = 0) {
   }
 }
 
+
 renderGameList(featured, gameList);
 renderGameList(sale, saleList, Math.floor(Math.random() * 26) + 5);
 renderGameList(popular, popularList);
@@ -99,8 +107,7 @@ async function handleGameCoverClick(event) {
 
   const gameDetailsDisplay = document.getElementById("game-details-display");
   
-  gameDetailsDisplay.style.display = "block";
-  displayContainer.style.display = "none";
+  gameDetailsDisplay.style.display = "flex";
 
 
   const gameId = event.target.getAttribute('data-id');
@@ -113,13 +120,13 @@ async function handleGameCoverClick(event) {
 }
 
 
-const addToCartButtons = document.querySelectorAll(".game-buy");
+const addToCartButtons = document.querySelectorAll(".game-buy-btn");
 
 addToCartButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
     const gameId = event.target.dataset.id;
     const gameTitle = event.target.closest(".game-container").querySelector(".game-title").textContent;
-    const gamePrice = event.target.closest(".game-container").querySelector(".game-price span").textContent.slice(2);
+    const gamePrice = event.target.closest(".game-container").querySelector(".game-price").textContent.slice(2);
     const gameCover = event.target.closest(".game-container").querySelector(".game-cover").getAttribute("src");
 
     addToCart(gameId, gameTitle, gamePrice, gameCover);
@@ -208,17 +215,17 @@ function addBackgroundImage(container, imageUrl) {
     });
   });
 
-  container.addEventListener("mouseleave", () => {
-    bodyBackgrounds.forEach((bg) => {
+  // container.addEventListener("mouseleave", () => {
+  //   bodyBackgrounds.forEach((bg) => {
 
-      bg.style.opacity = "";
-      bg.style.overflowY = "";
-      bg.classList.remove("show");
-      setTimeout(() => {
-          bg.style.backgroundImage = "";
-      }, 150);
-    });
-  });
+  //     bg.style.opacity = "";
+  //     bg.style.overflowY = "";
+  //     bg.classList.remove("show");
+  //     setTimeout(() => {
+  //         bg.style.backgroundImage = "";
+  //     }, 150);
+  //   });
+  // });
 }
 
 

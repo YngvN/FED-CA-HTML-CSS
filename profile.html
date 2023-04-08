@@ -18,29 +18,29 @@
         <img id="company-name" src="assets/img_logo_text_lg.png" alt="Gamehub name">
         <nav>
             <ul id="nav-list" class="row">
-                <div class="search-container row">
-                    <form id="search-form">
-                        <button type="submit" id="search-btn"><i class="fa-solid fa-search"></i></button>
-                        <input type="text" id="search-input" placeholder="Search for games">
-                    </form>
-                </div>
-                <li><a href="index.html"><i class="fas fa-home"></i><span class="nav-text"> Home</span></a></li>
+                <form id="search-form">
+                    <button type="submit" class="search-btn"><i class="fa-solid fa-search"></i></button>
+                    <input type="text" id="search-input" placeholder="Search for games">
+                </form>
+                <li><a href="index.html"><i class="fas fa-home"></i><span class="nav-text"> Home</span></a>
+                </li>
                 <li class="dropdown">
                     <a href="profile.html" class="dropdown-toggle active">
                         <i class="fas fa-user"></i><span class="nav-text"> Profile</span></a>
-                    <div id="nav-dropdown" class="dropdown-menu ">
+                    <!-- <div id="nav-dropdown" class="dropdown-menu ">
                         <form class="column">
                             <input type="email" name="email" placeholder="Email">
                             <input type="password" name="password" placeholder="Password">
                             <button type="submit">Log in</button>
+                            <button class="create-user-btn" type="button"
+                                onclick="window.location.href='profile.html'">Create user</button>
                         </form>
-                        <button class="create-user-btn" type="button" onclick="window.location.href='profile.html'">Create
-                            user</button>
-                    </div>
+    
+                    </div> -->
                 </li>
                 <li class="dropdown">
-                    <a href="cart.html" class="dropdown-toggle"><i class="fa-solid fa-cart-shopping fa-lg"></i><span
-                            class="nav-text"> Cart</span></a>
+                    <a href="cart.html" class="dropdown-toggle cart-notification"><i
+                            class="fa-solid fa-cart-shopping fa-lg"></i><span class="nav-text"> Cart</span></a>
                     <div id="nav-cart-dropdown" class="dropdown-menu">
                         <div id="nav-cart" class="column">
                             <p>Cart is empty</p>

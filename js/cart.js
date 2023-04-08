@@ -40,14 +40,14 @@ export const updateCartDisplay = () => {
     const price = localStorage.getItem(`price_${game.id}`);
     totalPrice += Number(price);
     cartItem.innerHTML = `
-      <h4 class="cart-text">${game.name} - $${price}</h4>
-      <button class="remove-game" data-id="${game.id}">
+      <p class="cart-text">${game.name} <br> - $${price}</p>
+      <button class="remove-game-btn" data-id="${game.id}">
           <i class="fa-regular fa-trash-can"></i>
       </button>
     `;
     fragment.appendChild(cartItem);
 
-    const removeButton = cartItem.querySelector(".remove-game");
+    const removeButton = cartItem.querySelector(".remove-game-btn");
     removeButton.addEventListener("click", (event) => {
       console.log(`Removing game with ID: ${game.id}`);
       removeGame(game.id);
@@ -71,16 +71,12 @@ export const updateCartDisplay = () => {
   navCart.appendChild(fragment);
 };
 
-
-
 export const showCartNotification = () => {
   const cartIcon = document.querySelector(".cart-notification");
-  cartIcon.style.backgroundColor = "green";
-  cartIcon.style.transition = ".1s";
+  cartIcon.classList.add("flash");
 
   setTimeout(() => {
-    cartIcon.style.transition = "2s";
-    cartIcon.style.backgroundColor = "var(--darkgrey";
+    cartIcon.classList.remove("flash");
   }, 2000);
 };
 

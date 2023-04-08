@@ -9,12 +9,12 @@ export const fetchData = async (url) => {
     const response = await fetch(url);
     const data = await response.json();
     const games = data.results.map(async (game) => {
-      let price = generateRandomPrice(game.id);
-      let description = game.description;
-      if (!description) {
-        description = await fetchGameDetails(game.id);
+      let price = localStorage.getItem(`price_${game.id}`);
+      if (!price) {
+        price = generateRandomPrice(game.id);
       }
-      return { ...game, price, description };
+
+      return { ...game, price };
     });
     return Promise.all(games);
   } catch (error) {
@@ -22,6 +22,7 @@ export const fetchData = async (url) => {
     return [];
   }
 };
+
 
 
 const generateRandomPrice = (id) => {
@@ -57,14 +58,11 @@ const gameDetailsDisplay = document.getElementById("game-details-display");
 
 const closeButton = document.createElement("button");
 closeButton.innerHTML = '<i class="fa fa-times"></i>';
-closeButton.classList.add("close-button");
+closeButton.classList.add("close-btn");
 
 closeButton.addEventListener("click", () => {
-  const displayContainer = document.getElementById("display-container");
-
   console.log("Close-button")
   gameDetailsDisplay.style.display = "none";
-  displayContainer.style.display = "flex";
 
 });
 
