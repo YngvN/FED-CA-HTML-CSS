@@ -541,6 +541,7 @@ li.dropdown:hover .dropdown-menu {
 }
 
 #search-results-container {
+
     grid-template-columns: repeat(1, 1fr);
 }
 
