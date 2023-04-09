@@ -17,7 +17,7 @@
     <header class="header">
         <img id="company-name" src="assets/img_logo_text_lg.png" alt="Gamehub name">
         <nav>
-            <ul id="nav-list" class="row">
+            <ul id="nav-list" class="">
                 <form id="search-form">
                     <button type="submit" class="search-btn"><i class="fa-solid fa-search"></i></button>
                     <input type="text" id="search-input" placeholder="Search for games">
@@ -51,35 +51,37 @@
         </nav>
     </header>
     <main class="main-profile">
-        <h1>Welcome to your profile</h1>
-        <p>You can view your account information and edit your settings here.</p>
-        <div class="row">
-            <div class="profile-container container">
-                <h2>Account information</h2>
-                <div class="profile-child">
-                    <label>Username:</label>
-                    <p>john_doe</p>
-                </div>
-                <div class="profile-child">
-                    <label>Email:</label>
-                    <p>john_doe@example.com</p>
-                </div>
+        <div class="container">
+            <h1>Welcome to your profile</h1>
+            <p>You can view your account information and edit your settings here.</p>
+            <div class="row">
+                <div class="profile-container">
+                    <h2>Account information</h2>
+                    <div class="profile-child">
+                        <label>Username:</label>
+                        <p>john_doe</p>
+                    </div>
+                    <div class="profile-child">
+                        <label>Email:</label>
+                        <p>john_doe@example.com</p>
+                    </div>
 
-            </div>
-            <div class="profile-container container">
-                <h2>Settings</h2>
-                <form id="profile-form" class="column">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" value="john_doe@example.com">
-                    <br>
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" value="john_doe">
-                    <br>
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" value="**********">
-                    <br>
-                    <button type="submit">Save changes</button>
-                </form>
+                </div>
+                <div class="profile-container">
+                    <h2>Settings</h2>
+                    <form id="profile-form" class="column">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" value="john_doe@example.com">
+                        <br>
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" value="john_doe">
+                        <br>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" value="**********">
+                        <br>
+                        <button type="submit">Save changes</button>
+                    </form>
+                </div>
             </div>
         </div>
     </main>

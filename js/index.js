@@ -67,12 +67,10 @@ async function renderGameList(games, list, discountPercentage = 0, listType = nu
         <div class="game-price">
           ${priceHTML}
         </div>
-        <button class="game-buy-btn" data-id="${game.id}"><i class="fa-solid fa-cart-shopping fa-lg"></i>$${game.price}</button>
-
-
         <div class="game-genre">
           <p>${game.genres.map(genre => genre.name).join(', ')}</p>
         </div>
+        <button class="game-buy-btn" data-id="${game.id}"><i class="fa-solid fa-cart-shopping fa-lg"></i>$${game.price}</button>
       </div>
     `;
 

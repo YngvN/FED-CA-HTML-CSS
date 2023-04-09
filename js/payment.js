@@ -43,14 +43,17 @@ const displayCartContents = () => {
   const gameContainers = cart.map((game) => {
     return `
       <div class="game-container">
-        <img class="game-cover" src="${game.cover}" alt="${game.name}" />
+        <img class="game-cover" src="${game.cover}" alt="${game.name}" data-id="${game.id}" />
         <div class="game-details">
           <h3 class="game-title">${game.name}</h3>
+          <button class="view-more-btn" data-id="${game.id}">View more</button>
         </div>
+
         <div class="game-price">
-          <p>$ ${game.price}</p>
-          <button class="game-buy" data-id="${game.id}"><i class="fa-regular fa-trash-can"></i></button>
         </div>
+        <div class="game-genre">
+        </div>
+        <button class="game-buy-btn" data-id="${game.id}"><i class="fa-regular fa-trash-can"></i></button>
       </div>
     `;
   });
@@ -65,7 +68,7 @@ const displayCartContents = () => {
     updatePaymentSection(totalPrice);
   }
 
-  const removeButtons = document.querySelectorAll(".game-buy");
+  const removeButtons = document.querySelectorAll(".game-buy-btn");
   removeButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       const gameId = event.target.dataset.id;
