@@ -7,13 +7,14 @@ const baseUrl = "https://api.rawg.io/api";
 export const fetchData = async (url) => {
   try {
     const response = await fetch(url);
+    console.log("Fetchdata URL: " + url);
     const data = await response.json();
     const games = data.results.map(async (game) => {
       let price = localStorage.getItem(`price_${game.id}`);
       if (!price) {
         price = generateRandomPrice(game.id);
       }
-
+      console.log(game);
       return { ...game, price };
     });
     return Promise.all(games);
@@ -31,23 +32,24 @@ const generateRandomPrice = (id) => {
   return randomPrice.toFixed(2);
 };
 
-export const fetchGameDetails = async (id) => {
-  try {
-    const url = `${baseUrl}/games/${id}?key=${apiKey}`;
-    const response = await fetch(url);
-    const data = await response.json();
-    return data.description_raw;
-  } catch (error) {
-    console.error(`Error fetching game details for ID ${id}:`, error);
-    return "";
-  }
-};
+// export const fetchGameDetails = async (id) => {
+//   try {
+//     const url = `${baseUrl}/games/${id}?key=${apiKey}`;
+//     const response = await fetch(url);
+//     const data = await response.json();
+//     console.log(data);
+//     return data.description_raw;
+//   } catch (error) {
+//     console.error(`Error fetching game details for ID ${id}:`, error);
+//     return "";
+//   }
+// };
 
 export async function fetchGameById(url) {
+  console.log("Fetchdata URL: " + url);
   try {
     const response = await fetch(url);
     const data = await response.json();
-    console.log("Game data fetched");
     return data;
   } catch (error) {
     console.error("Error fetching game data:", error);

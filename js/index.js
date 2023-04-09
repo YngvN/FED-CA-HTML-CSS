@@ -35,7 +35,7 @@ const sale = shuffledGames.slice(5, 10);
 
 const popular = shuffledGames.slice(10, 15);
 
-function renderGameList(games, list, discountPercentage = 0) {
+async function renderGameList(games, list, discountPercentage = 0, listType = null) {
   for (let i = 0; i < games.length; i++) {
     const game = games[i];
 
@@ -61,14 +61,14 @@ function renderGameList(games, list, discountPercentage = 0) {
         <img class="game-cover" src="${game.background_image}" alt="${game.name}" data-id="${game.id}" />
         <div class="game-details">
           <h3 class="game-title">${game.name}</h3>
-   
           <button class="view-more-btn" data-id="${game.id}">View more</button>
         </div>
 
         <div class="game-price">
           ${priceHTML}
         </div>
-          <button class="game-buy-btn" data-id="${game.id}"><i class="fa-solid fa-cart-shopping fa-lg"></i>$${game.price}</button>
+        <button class="game-buy-btn" data-id="${game.id}"><i class="fa-solid fa-cart-shopping fa-lg"></i>$${game.price}</button>
+
 
         <div class="game-genre">
           <p>${game.genres.map(genre => genre.name).join(', ')}</p>
@@ -81,7 +81,6 @@ function renderGameList(games, list, discountPercentage = 0) {
     const gameCovers = document.querySelectorAll('.game-cover');
 
     gameCovers.forEach(gameCover => {
-      console.log(game.id)
       gameCover.removeEventListener('click', handleGameCoverClick);
       gameCover.addEventListener('click', handleGameCoverClick);
     });
@@ -89,11 +88,26 @@ function renderGameList(games, list, discountPercentage = 0) {
     list.appendChild(gameItem);
 
     addBackgroundImage(container, imageUrl);
+
+    // console.log(listType)
+    // if (listType === "featured") {
+    //   const gameURL = buildGameUrl(game.id);
+    //   const featuredGame = await fetchGameById(gameURL);
+    //   const featuredDesc = document.getElementById("featured-description");
+    //   featuredDesc.innerHTML = `
+    //   <div class="game-desc" data-id="${game.id}">
+    //     <h3 class="game-title">${featuredGame.name}</h3>
+    //     <p class="game-description">${featuredGame.description ? featuredGame.description : 'Description not available'}</p>
+    //   </div>
+    //   `;
+    // }
+
   }
 }
 
 
-renderGameList(featured, gameList);
+
+renderGameList(featured, gameList, 0, "featured");
 renderGameList(sale, saleList, Math.floor(Math.random() * 26) + 5);
 renderGameList(popular, popularList);
 
@@ -113,10 +127,9 @@ async function handleGameCoverClick(event) {
   const gameId = event.target.getAttribute('data-id');
   const gameURL = buildGameUrl(gameId);
   const game = await fetchGameById(gameURL);
-
-  console.log("Details clicked for " + game.name);
   fillGameDetails(game);
   console.log("Details displayed");
+  console.log(game.description);
 }
 
 
@@ -267,5 +280,49 @@ const fillGameDetails = (game) => {
 
   gameDetailsDisplay.innerHTML = html;
 };
+
+// const featuredGames = document.getElementById("featured-games");
+// const featuredList = document.getElementById("featured-list");
+// const gameContainers = featuredList.querySelectorAll(".game-container");
+// const descriptions = featuredList.querySelectorAll(".game-desc");
+
+
+// featuredList.addEventListener("scroll", () => {
+//   const scrollLeft = featuredList.scrollLeft;
+//   const scrollRight = scrollLeft + featuredList.offsetWidth;
+
+//   gameContainers.forEach((container, index) => {
+//     const containerLeft = container.offsetLeft;
+//     const containerRight = containerLeft + container.offsetWidth;
+
+//     // Check if container is at least partially in view
+//     if (containerRight > scrollLeft && containerLeft < scrollRight) {
+//       const gameId = container.querySelector(".game-desc").getAttribute("data-id");
+
+//       // Add "visible" class to current container and description, and remove from others
+//       container.classList.add("visible");
+//       descriptions.forEach((desc) => {
+//         if (desc.getAttribute("data-id") === gameId) {
+//           desc.classList.add("visible");
+//         } else {
+//           desc.classList.remove("visible");
+//         }
+//       });
+//     } else {
+//       container.classList.remove("visible");
+//     }
+//   });
+// });
+
+
+
+
+
+
+
+
+
+
+
 
 console.log("index.js loaded")
