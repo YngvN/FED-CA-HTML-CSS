@@ -1,1 +1,17 @@
-IGDB.com. (2023). IGDB: Video Game Database API [API]. Retrieved from https://www.igdb.com/api
+# Game store project
+
+![image](https://user-images.githubusercontent.com/52622303/164316813-4b12d99f-aeb7-4069-85cf-e72b3a50ac99.png)
+
+A web store that uses RAWG API to get games and display them.
+
+## Description
+
+My first project with connecting to an external API. To make the page more dynamic, I've added some slight randomization to the the prices. I also tried to have some fun with animation on the product tiles. There are some issues with adding games from the search to the cart, and also the cart itself-
+
+## Contact
+
+[My LinkedIn page](https://www.linkedin.com/in/yngve-nykås-363b28bb/)
+
+## Acknowledgments
+
+RAWG.io (2023). Video Game Database API [API]. Retrieved from https://rawg.io/apidocs
