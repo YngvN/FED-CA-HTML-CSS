@@ -1,6 +1,6 @@
 # Game store project
 
-![Image of Gamehub](/assets/img_logo _text_sm.png)
+![Image of Gamehub](img-gamehub-min.png)
 
 A web store that uses RAWG API to get games and display them.
 
